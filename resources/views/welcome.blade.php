@@ -8,7 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
+        <link rel="manifest" href="./manifest.json">
         <!-- Styles -->
         <style>
             html, body {
@@ -94,5 +94,6 @@
                 </div>
             </div>
         </div>
+        <script src="./main.js"></script>
     </body>
 </html>
