@@ -83,6 +83,7 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
+                <a href="blog/">Blog</a>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
