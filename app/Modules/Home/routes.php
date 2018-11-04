@@ -1,5 +1,5 @@
 <?php
 
-Route::group(['namespace' => 'App\Modules\StaticPages\Application\Controllers'], function () {
+Route::group(['namespace' => 'App\Modules\Home\Application\Controllers'], function () {
 	Route::get('/', 'HomeController@index')->name("home");
 });

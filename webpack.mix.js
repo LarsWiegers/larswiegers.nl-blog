@@ -11,7 +11,9 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.browserSync('localhost:8000');
+mix.browserSync('localhost:8000')
+	.copy('app/Modules/Home/Presentation/Assets/css/main.css', 'public/css/home-main.css')
+	.copy('app/Modules/Home/Presentation/Assets/images', 'public/images/home-images')
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+	.js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css');

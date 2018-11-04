@@ -1,98 +1,54 @@
-@extends("Blog::layouts.welcome")
+@extends("Home::layouts.welcome")
 @section("body")
-    <div id="app">
-        <section class="top-bar">
-            <input type="checkbox" class="top-bar__nav-checkbox" id="top-bar__nav-checkbox" name="top-bar__nav-checkbox">
-            <section class="top-bar__nav-mobile">
-                <label for="top-bar__nav-checkbox" title="mobile menu">
-                    <i class="fa fa-bars" title="mobile menu"></i>
-                </label>
-            </section>
-            <nav class="top-bar__nav">
-                <a class="top-bar__nav__link" href="/home">Lars Wiegers</a>
-                <a class="top-bar__nav__link" href="/home">Home</a>
-                <a class="top-bar__nav__link" href="{{route('blog.index')}}">Blog</a>
-                <a class="top-bar__nav__link" href="/home">Projects</a>
-                <a class="top-bar__nav__link" href="/home">Contact</a>
-            </nav>
-            <section class="top-bar__actions">
-                <a href="#" class="top-bar__actions__icon" title="search">
-                    <i class="fa fa-search" title="search"></i>
-                </a>
-                <a href="#" class="top-bar__actions__icon"title="linkedin">
-                    <i class="fa fa-linkedin" title="linkedin"></i>
-                </a>
-            </section>
-            <section class="top-bar__actions__extra">
-            </section>
+    <!-- Wrapper -->
+    <div id="wrapper" class="divided">
 
-
-        </section>
-        <section class="header-banner">
-            <div class="header-banner__background" style="background-image: url(https://cdn.jevelin.shufflehound.com/wp-content/uploads/sites/11/2016/11/Blog_title_image.jpg)"></div>
-            <div class="header-banner__foreground">
-                <h1 class="header-banner__foreground__main-title">
-                    Your ocean of posts
-                </h1>
-                <h2 class="header-banner__foreground__sub-title">
-                    By lars Wiegers
-                </h2>
+        <!-- One -->
+        <section class="banner style1 orient-left content-align-left image-position-left fullscreen onload-image-fade-in onload-content-fade-right">
+            <div class="content">
+                <h1>Lars Wiegers</h1>
+                <p class="major">Zeer gepassioneerde programmeur die studeert bij Saxion in Deventer.
+                <ul class="actions vertical">
+                    <li><a href="#first" class="button big wide smooth-scroll-middle">Wie ben ik ?</a></li>
+                </ul>
+            </div>
+            <div class="image">
+                <img src="{{asset('images/home-images/banner.jpg')}}" alt="" />
             </div>
         </section>
-        <section class="blog-pills">
-            <ul class="blog-pills__list">
-                @if($request->segment(2) == null)
-                    <li class="blog-pills__list__item blog-pills__list__item--active">
-                @else
-                    <li class="blog-pills__list__item">
-                @endif
-                        <a href="{{route('categories.show', ['slug' => 'all'])}}" class="blog-pills__list__link">All</a>
-                    </li>
-                @foreach($categories as $category)
-                    @if($category->slug == $request->segment(2))
-                        <li class="blog-pills__list__item blog-pills__list__item--active">
-                            @else
-                        <li class="blog-pills__list__item">
-                    @endif
-                        <a href="{{route('categories.show', ['slug' => $category->slug])}}"
-                           class="blog-pills__list__link">
-                            {{$category->title}}</a>
-                    </li>
-                @endforeach
-            </ul>
-        </section>
-        <section class="blog-cards">
-            @foreach($posts as $post)
-                <div class="blog-cards__card">
-                    <a href="{{route("blog.show",['id' => $post->id])}}">
-                        <div class="blog-cards__card__image-container">
-                            <img class="blog-cards__card__image" src="https://cdn.jevelin.shufflehound.com/wp-content/uploads/sites/11/2016/11/1-1024x777.jpg">
-                        </div>
-                        <div class="blog-cards__card__text-container">
-                            <div class="info">
-                                by <span class="author">{{$post->author->name}}</span>
-                                <span class="date">{{$post->created_at->format('l jS \\of F Y')}}</span>
-                            </div>
-                            <div class="title">
-                                <h3>{{$post->title}}</h3>
-                            </div>
-                            <div class="content">
-                                {{$post->content}}
-                            </div>
-                        </div>
-                        <div class="blog-cards__card__comment-section">
-                            <hr class="blog-cards__card__comment-line">
-                            <span class="blog-cards__card__comment-bubble-container">
-                                <span class="blog-cards__card__comment-bubble">
 
-                                <i class="fa fa-comment-o"></i> {{123}}
-                                </span>
-                            </span>
-                        </div>
-                    </a>
-                </div>
-
-            @endforeach
+        <!-- Two -->
+        <section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="first">
+            <div class="content">
+                <h2>Wie ben ik?</h2>
+                <p>Ik ben een beginnend applicatieontwikkelaar in Apeldoorn die zich vooral richt op het de hele web development stack. Ik ben op dit moment bezig mij verder te ontwikkelen op dit gebied door een hbo opleiding te doen. Tijdens mijn vorige opleiding heb ik de mogelijkheid gekregen om mijn school te vertegenwoordigen op de Nederlandse wedstrijden van het mbo. Bij deze wedstrijden ben ik <b>4e van Nederland</b> geworden.</p>
+            </div>
+            <div class="image">
+                <img src="{{asset('images/home-images/lars.jpg')}}" alt="" />
+            </div>
         </section>
+
+        <!-- Three -->
+        <section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+            <div class="content">
+                <h2>Mijn werk</h2>
+                <p>Het grootste gedeelte van mijn software projecten zijn te vinden op mijn  <a href="https://github.com/LarsWiegers">github</a>. Daarnaast ben ik ook nog actief op <a href="https://linkedin.com/in/larswiegers">linkedin</a>. Daarnaast kunt u mij ook nog mailen als u in contact wil komen : <a href="mailto:larswiegers@live.nl">larswiegers@live.nl</a></p>
+            </div>
+            <div class="image">
+                <img src="{{asset('images/home-images/pic03.png')}}" alt="" />
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer class="wrapper style1 align-center">
+            <div class="inner">
+                <ul class="icons">
+                    <li><a href="https://github.com/LarsWiegers" class="icon style2 fa-github"><span class="label">Twitter</span></a></li>
+                    <li><a href="https://linkedin.com/in/larswiegers" class="icon style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                    <li><a href="mailto:larswiegers@live.nl" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
+                </ul>
+                <p>&copy; Lars Wiegers 2018</p>
+            </div>
+        </footer>
+
     </div>
 @endsection("body")

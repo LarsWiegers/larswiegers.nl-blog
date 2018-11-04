@@ -51,4 +51,17 @@ class Post extends Model
 		return $this->belongsTo('App\User', 'author_id', 'id');
 	}
 
+	/**
+	 * Get the short version of a post's content.
+	 *
+	 * @return string
+	 */
+	public function getShortContent()
+	{
+		if($this->content) {
+			return str_limit($this->content, $limit = 100, $end = '...');
+		}
+		return '';
+	}
+
 }

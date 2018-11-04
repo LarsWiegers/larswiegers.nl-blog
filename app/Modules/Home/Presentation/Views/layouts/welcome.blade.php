@@ -8,10 +8,9 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-        <link rel="manifest" href="./manifest.json">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{asset('css/app.css')}}" />
+        <link rel="stylesheet" href="{{asset('css/home-main.css')}}" />
     </head>
     <body>
         @yield("body")

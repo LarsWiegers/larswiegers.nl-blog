@@ -19,10 +19,10 @@ class WebPostController extends Controller
     {
 	    $categories = Category::all();
 	    $posts = Post::getLatest(15);
-	    foreach ($posts as $post ) {
-	        $post->content = str_limit($post->content, $limit = 100, $end = '...');
-        }
-	    return view('Blog::pages.home',['posts' => $posts, 'categories' => $categories,'request' => $request]);
+	    return view('Blog::pages.home',[
+	    	'posts' => $posts,
+		    'categories' => $categories,
+		    'request' => $request]);
     }
     /**
      * Display the specified resource.
