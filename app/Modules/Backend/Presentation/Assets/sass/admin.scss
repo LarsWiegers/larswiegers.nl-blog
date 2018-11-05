@@ -1,0 +1,54 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "common/common";
+@import "admin/admin";
+
+#app > .container-fluid {
+  padding-left:0;
+  padding-right:0;
+  > .col-md-2,.col-md-10 {
+    padding-left:0;
+    padding-right:0;
+  }
+}
+.admin-heading {
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+
+  p {
+    margin-bottom:0;
+  }
+}
+
+.project {
+  > .panel-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 750ms ease-in-out;
+    &.open {
+      max-height: 100vh;
+    }
+  }
+  .caret {
+    border-top: 10px dashed;
+    border-top: 10px solid \9
+  ;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+  }
+}
+.admin-list {
+  .row {
+    margin-bottom:15px;
+    .btn {
+    margin-top: -8px;
+    }
+  }
+}

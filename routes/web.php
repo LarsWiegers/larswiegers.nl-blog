@@ -22,3 +22,5 @@ Route::get('/projects/', function () {
 Route::get('/contact/', function () {
 	return view('welcome');
 })->name('contact.index');
+
+Route::get('/home', 'HomeController@index')->name('home');

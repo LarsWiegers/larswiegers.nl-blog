@@ -3,6 +3,9 @@
 return  [
 	'modules' => [
 		'Blog',
-		'Home'
+		'Home',
+
+		'Auth',
+		'Backend'
 	]
 ];

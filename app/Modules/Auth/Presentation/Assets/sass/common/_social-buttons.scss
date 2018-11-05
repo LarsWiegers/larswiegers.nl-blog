@@ -1,0 +1,64 @@
+.social-box {
+  border-radius: 5px;
+  background-repeat: no-repeat !important;
+  margin-left: 7.5px;
+  margin-right: 7.5px;
+  padding-top: 7.5px;
+  min-height: 115px;
+  margin-bottom: 15px;
+  position: relative;
+  a {
+    color: white;
+    display: block;
+    .url-beam {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      i {
+        margin-left: 10px;
+      }
+    }
+  }
+
+}
+
+.instagram {
+  color: white;
+  background: #0e68ce url("../images/instagramlogo.png");
+  background-position: 95% 10%;
+  background-size: 25px 25px;
+  margin-left: 30px;
+  .url-beam {
+    background: lighten(#0e68ce, 10);
+  }
+  @media only screen and (max-width: 992px) {
+    margin-left: 7.5px;
+  }
+
+}
+
+.youtube {
+  color: white;
+  background: #ee0f0f url("../images/youtubelogo.svg");
+  background-position: 95% 12%;
+  background-size: 60px 25px;
+  .url-beam {
+    background: lighten(#ee0f0f, 10);
+  }
+}
+
+.twitter {
+  color: white;
+  background: #433e90 url("../images/twitterlogo.png");
+
+  background-position: 95% 10%;
+  background-size: 30px 25px;
+  .url-beam {
+    background: lighten(#433e90, 10);
+  }
+
+}

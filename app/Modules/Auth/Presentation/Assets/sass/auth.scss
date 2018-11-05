@@ -1,0 +1,30 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "common/common";
+.navbar-nav {
+  height:0;
+}
+
+.panel {
+  background-color: $navbar-default-bg;
+  &-heading {
+    border-color: #d3e0e9;
+  }
+  border: 1px solid #d3e0e9;
+  margin-bottom: 22px;
+}
+
+.back {
+  background-color:green;
+}
+.profile-container {
+  > a {
+    display:inline-block !important;
+  }
+}
