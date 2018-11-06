@@ -9,7 +9,7 @@
                 <h1>Lars Wiegers</h1>
                 <p class="major">Zeer gepassioneerde programmeur die studeert bij Saxion in Deventer.
                 <ul class="actions vertical">
-                    <li><a href="#first" class="button big wide smooth-scroll-middle">Wie ben ik ?</a></li>
+                    <li><a href="{{route('blog.index')}}" class="button big wide smooth-scroll-middle">blog</a></li>
                 </ul>
             </div>
             <div class="image">
