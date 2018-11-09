@@ -48,12 +48,6 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="{{ route('profile') }}">
-                                        Profile
-                                    </a>
-
-                                </li>
-                                <li>
                                     <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -76,6 +70,8 @@
 </div>
 
 <!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+{!! $chart->script() !!}
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

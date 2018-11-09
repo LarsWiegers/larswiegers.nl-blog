@@ -35,4 +35,12 @@ class User extends Authenticatable
 	{
 		return $this->hasMany('App\Modules\Blog\Application\Post');
 	}
+
+	/**
+	 * Get the social media accounts associated with the user.
+	 */
+	public function socialMediaAccounts()
+	{
+		return $this->hasMany('App\Modules\SocialMedia\Domain\SocialMediaAccount');
+	}
 }

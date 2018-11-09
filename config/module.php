@@ -6,6 +6,8 @@ return  [
 		'Home',
 
 		'Auth',
-		'Backend'
+		'Backend',
+		'User',
+		'SocialMedia'
 	]
 ];
