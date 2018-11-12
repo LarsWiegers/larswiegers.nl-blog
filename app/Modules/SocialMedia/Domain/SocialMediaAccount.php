@@ -24,4 +24,12 @@ class SocialMediaAccount extends Model
 	{
 		return $this->hasMany('App\Modules\SocialMedia\Domain\SocialMediaUserCount', 'account_id');
 	}
+
+	/**
+	 * Get the latest count we have.
+	 */
+	public function getLatestCount()
+	{
+		return $this->userCount->sortByDesc('updated_at')->first()->count;
+	}
 }
