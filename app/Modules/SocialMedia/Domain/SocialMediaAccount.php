@@ -26,6 +26,15 @@ class SocialMediaAccount extends Model
 	}
 
 	/**
+	 * Get Account Type
+	 */
+	public function AccountType()
+	{
+		return $this->hasOne('App\Modules\SocialMedia\Domain\SocialMediaType'
+			, 'id', 'type_id');
+	}
+
+	/**
 	 * Get the latest count we have.
 	 */
 	public function getLatestCount()

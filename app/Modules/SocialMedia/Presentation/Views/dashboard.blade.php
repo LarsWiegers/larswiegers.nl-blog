@@ -9,12 +9,12 @@
                     <div class="panel-body">
                         @if(isset($accounts))
                             @foreach($accounts as $account)
-                                <div class="col-md-3 {{strtolower($account->name)}} social-box">
+                                <div class="col-md-3 {{strtolower($account->accountType->name)}} social-box">
                                     <h3>{{$account->getLatestCount()}}</h3>
-                                    <p>{{$account->name}}</p>
+                                    <p>{{$account->accountType->name}}</p>
                                     <a href="{{$account->url}}">
                                         <div class="url-beam">
-                                            Ga naar {{$account->name}}
+                                            Ga naar {{$account->accountType->name}}
                                             <i class="fa fa-arrow-circle-right"></i>
                                         </div>
                                     </a>

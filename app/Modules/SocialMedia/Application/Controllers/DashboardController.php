@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller {
 	public function index () {
-		$colors = ['#00ffaa', '#aaff00'];
+		$colors = [];
+		foreach(Auth::user()->socialMediaAccounts as $mediaAccount) {
+			$colors[] = $mediaAccount->accountType->color;
+		}
 
 		if(count(Auth::user()->socialMediaAccounts)) {
 			$chart = new DefaultChart();
@@ -25,7 +28,7 @@ class DashboardController extends Controller {
 					$collection->push($socialMediaUserCount->count);
 					$xLabels[] = $socialMediaUserCount->created_at->format('m/d/Y');
 				}
-				$labels[] = $mediaAccount->name;
+				$labels[] = $mediaAccount->accountType->name;
 				$dataSets->push($collection);
 			}
 			foreach($dataSets as $index => $data) {
