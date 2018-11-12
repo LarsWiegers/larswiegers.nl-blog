@@ -228,7 +228,7 @@ h2 {
   &__card {
     position: relative;
     background: #fff;
-    box-shadow: 0px 15px 45px -9px rgba(0, 0, 0, 0.20);
+    box-shadow: 0 15px 45px -9px rgba(0, 0, 0, 0.20);
     color: #aaa;
     transition: 0.6s all ease-in-out;
     &:hover {
@@ -276,5 +276,15 @@ h2 {
     &--blurred {
       opacity: 0;
     }
+  }
+}
+
+.no-content-error {
+  text-align:center;
+  background-color: $orange;
+  margin: 1em 2em;
+  padding: 8px;
+  a:hover {
+    border-bottom: 1px solid;
   }
 }
