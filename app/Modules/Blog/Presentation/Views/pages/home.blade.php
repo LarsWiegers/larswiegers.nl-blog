@@ -9,17 +9,17 @@
                 </label>
             </section>
             <nav class="top-bar__nav">
-                <a class="top-bar__nav__link" href="/home">Lars Wiegers</a>
-                <a class="top-bar__nav__link" href="/home">Home</a>
+                <a class="top-bar__nav__link" href="{{route('home')}}">Lars Wiegers</a>
+                <a class="top-bar__nav__link" href="{{route('home')}}">Home</a>
                 <a class="top-bar__nav__link" href="{{route('blog.index')}}">Blog</a>
-                <a class="top-bar__nav__link" href="/home">Projects</a>
-                <a class="top-bar__nav__link" href="/home">Contact</a>
+                <a class="top-bar__nav__link" href="{{route('projects.index')}}">Projects</a>
+                <a class="top-bar__nav__link" href="{{route('contact.index')}}">Contact</a>
             </nav>
             <section class="top-bar__actions">
                 <a href="#" class="top-bar__actions__icon" title="search">
                     <i class="fa fa-search" title="search"></i>
                 </a>
-                <a href="#" class="top-bar__actions__icon"title="linkedin">
+                <a href="#" class="top-bar__actions__icon" title="linkedin">
                     <i class="fa fa-linkedin" title="linkedin"></i>
                 </a>
             </section>

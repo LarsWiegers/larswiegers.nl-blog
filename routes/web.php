@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home.index');
+use Illuminate\Support\Facades\Route;
 
 Route::get('/projects/', function () {
 	return view('welcome');
@@ -22,5 +20,3 @@ Route::get('/projects/', function () {
 Route::get('/contact/', function () {
 	return view('welcome');
 })->name('contact.index');
-
-Route::get('/home', 'HomeController@index')->name('home');
