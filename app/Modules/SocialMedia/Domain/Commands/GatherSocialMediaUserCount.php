@@ -43,7 +43,7 @@ class GatherSocialMediaUserCount extends Command
     {
         $accounts = SocialMediaAccount::all();
         foreach($accounts as $account) {
-        	switch($account->name) {
+        	switch($account->AccountType->name) {
 		        case 'Twitter':
 			        try {
 				        SocialMediaUserCount::create( [

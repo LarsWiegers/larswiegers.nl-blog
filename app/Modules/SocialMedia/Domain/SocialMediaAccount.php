@@ -39,6 +39,9 @@ class SocialMediaAccount extends Model
 	 */
 	public function getLatestCount()
 	{
-		return $this->userCount->sortByDesc('updated_at')->first()->count;
+		if($this->userCount->sortByDesc('updated_at')->first() ){
+			return $this->userCount->sortByDesc('updated_at')->first()->count;
+		}
+		return 0;
 	}
 }
