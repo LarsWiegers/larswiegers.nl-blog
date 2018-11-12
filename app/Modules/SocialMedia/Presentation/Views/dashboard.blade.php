@@ -37,3 +37,12 @@
         </div>
     </div>
 @endsection
+@section("scripts")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script>
+		const timeFormat = 'MM/DD/YYYY HH:mm';
+		function newDateString(days) {
+			return moment().add(days, 'd').format(timeFormat);
+		}
+    </script>
+@endsection
