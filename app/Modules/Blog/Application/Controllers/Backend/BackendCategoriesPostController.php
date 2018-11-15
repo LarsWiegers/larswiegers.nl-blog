@@ -7,6 +7,7 @@ use App\Modules\Blog\Domain\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 
 class BackendCategoriesPostController extends Controller
 {
@@ -17,11 +18,58 @@ class BackendCategoriesPostController extends Controller
      */
     public function index()
     {
-	    $categories = Category::all();
+	    $categories = Category::withoutGlobalScopes()->get();
 
 	    return view('Blog::backend.categories.home',[
 		    'categories' => $categories]);
     }
+
+	/**
+	 * Create the specified resource.
+	 *
+	 * @param  int
+	 * @return \Illuminate\Http\Response
+	 */
+	public function create()
+	{
+		return view('Blog::backend.categories.create');
+	}
+
+	/**
+	 * store the specified resource.
+	 *
+	 * @param  int
+	 * @return \Illuminate\Http\Response
+	 */
+	public function store(Request $request)
+	{
+		$validator = Validator::make($request->all(), [
+			'title' => 'required|unique:categories|max:255',
+			'description' => 'required',
+			'slug' => 'nullable',
+		]);
+
+		if ($validator->fails()) {
+			return redirect()->back()
+				->withErrors($validator)
+				->withInput();
+		}
+
+
+		$slug = ($request->get('slug') !== '' ||
+		         $request->get('slug') !== null)
+			? $request->get('slug')
+			: str_slug($request->get('slug'));
+
+
+		Category::create([
+			'title' => $request->get('title'),
+			'description' => $request->get('description'),
+			'slug' => str_slug($request->get('title'), '-')
+		]);
+
+		return redirect(route('categories.index'));
+	}
 
     /**
      * Display the specified resource.

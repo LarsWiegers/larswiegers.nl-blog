@@ -15,6 +15,7 @@ class FormGroupServiceProvider extends ServiceProvider
     public function boot()
     {
 	    Form::component('textGroup','components.text', ['params','errors']);
+	    Form::component('textAreaGroup','components.text-area', ['params','errors']);
     }
 
     /**

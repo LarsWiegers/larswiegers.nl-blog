@@ -13,9 +13,14 @@ class Category extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		'created_at', 'updated_at', 'public', 'title', 'content' , 'slug'
+		'created_at', 'updated_at', 'public', 'title', 'description' , 'slug'
 	];
 
+	protected $attributes = [
+		'public' => 0 // default is false
+	];
+
+	protected $table = 'categories';
 
 	/**
 	 * Get the route key for the model.
