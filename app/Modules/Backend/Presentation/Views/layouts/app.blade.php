@@ -47,6 +47,11 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
+                                <a href="{{route('backend.blog.index')}}">
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{route('backend.categories.index')}}">
                                     Categories
                                 </a>
