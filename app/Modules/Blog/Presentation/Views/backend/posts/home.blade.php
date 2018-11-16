@@ -67,7 +67,7 @@
                                             </td>
                                             <td>
                                                 <a href="{{route('backend.posts.destroy',
-                                                ['category' => $category->id])}}">
+                                                ['category' => $post->id])}}">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             </td>
