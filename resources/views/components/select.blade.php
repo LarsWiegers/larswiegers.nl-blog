@@ -6,7 +6,7 @@
                 {{array_get($params, 'required', false) ? '* required' : ''}}</span>
         @endif</label>
     <div class="col-sm-10">
-        <textarea
+        <select
             type="{{array_get($params, 'type', 'text')}}"
             id="{{array_get($params, 'name')}}"
             name="{{array_get($params, 'name')}}"
@@ -14,7 +14,13 @@
             placeholder="{{array_get($params, 'label')}}"
             cols="{{array_get($params, 'cols')}}"
             rows="{{array_get($params, 'rows')}}"
-                {{array_get($params, 'required', false) ? 'required' : ''}}>{{array_get($params, 'value')}}</textarea>
+                {{array_get($params, 'required', false) ? 'required' : ''}}>
+            @foreach($params['options'] as $option)
+                <option value="{{$option->id}}">
+                    {{$option->title}}
+                </option>
+            @endforeach
+            </select>
         <small class="text-danger">{{ $errors->first(array_get($params, 'name')) }}</small>
     </div>
 </div>

@@ -6,3 +6,8 @@ Route::group(['namespace' => '\App\Modules\User\Application\Controllers',
 	Route::get('/profile', 'ProfileController@index')->name('profile');
 	Route::put('/profile', 'ProfileController@save')->name('profile-save');
 });
+Route::group(['namespace' => 'App\Modules\User\Application\Controllers\Backend',
+              'prefix' => 'backend/users',
+              'middleware' => ['web', 'auth']], function () {
+	Route::resource('users', 'BackendUserController', ['as' => 'backend']);
+});

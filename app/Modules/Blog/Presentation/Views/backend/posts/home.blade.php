@@ -6,10 +6,17 @@
                 <div class="panel panel-default">
                     <div class="panel-heading panel-heading-crud">
                         <div class="panel-heading-left">
-                            <h1>Dashboard</h1>
+                            <h1>Posts</h1>
                         </div>
                         <div class="panel-heading-right">
-                            <a href="{{route('backend.categories.create')}}">
+                            @if(!is_null($category))
+                                <a href="{{route('backend.posts.create',
+                            ['category' => $category->id])}}">
+                                @else
+                                <a href="{{route('backend.posts.create')}}">
+                            @endif
+
+
                                 <i class="fa fa-plus"></i>
                             </a>
                         </div>
@@ -20,56 +27,54 @@
                                 <thead>
                                     <tr>
                                         <th>title</th>
-                                        <th>description</th>
+                                        <th>content</th>
                                         <th>public</th>
                                         <th>created at</th>
                                         <th>updated at</th>
-                                        <th>slug</th>
                                         <th>link</th>
                                         <th>edit</th>
                                         <th>delete</th>
-                                        <th>posts</th>
+                                        <th>author</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($categories as $category)
+                                    @foreach($posts as $post)
                                         <tr>
                                             <td>
-                                                {{$category->title}}
+                                                {{$post->title}}
                                             </td>
                                             <td>
-                                                {{$category->description}}
+                                                {{$post->content}}
                                             </td>
                                             <td>
-                                                {{($category->title === 1 ? 'yes' : 'no')}}
+                                                {{($post->title === 1 ? 'yes' : 'no')}}
                                             </td>
                                             <td>
-                                                {{$category->created_at}}
+                                                {{$post->created_at}}
                                             </td>
                                             <td>
-                                                {{$category->updated_at}}
+                                                {{$post->updated_at}}
                                             </td>
                                             <td>
-                                                {{$category->slug}}
-                                            </td>
-                                            <td>
-                                                <a href="{{route('categories.show',['category' => $category->slug])}}">Link</a>
-                                            </td>
-                                            <td>
-                                                <a href="{{route('backend.categories.edit',
-                                                ['category' => $category->id])}}">
+                                                <a href="{{route('backend.posts.edit',
+                                                ['category' => $post->id])}}">
                                                     <i class="fa fa-edit"></i></a>
                                             </td>
                                             <td>
-                                                <a href="{{route('backend.categories.destroy',
+                                                <a href="{{route('backend.posts.edit',
+                                                ['category' => $post->id])}}">
+                                                    <i class="fa fa-edit"></i></a>
+                                            </td>
+                                            <td>
+                                                <a href="{{route('backend.posts.destroy',
                                                 ['category' => $category->id])}}">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="{{route('backend.posts.index',
-                                                ['category' => $category->id])}}">
-                                                    <i class="fa fa-align-center"></i>
+                                                <a href="{{route('backend.users.index',
+                                                ['user' => $post->author_id])}}">
+                                                    <i class="fa fa-user"></i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -77,11 +82,9 @@
                                 </tbody>
 
                             </table>
-                            <a href="{{ route('logout') }}"
-
-                            </a>
-
-
+                            @if(count($posts) <= 0)
+                                <h1>There are no posts yet!</h1>
+                            @endif
                         </div>
                     </div>
                 </div>

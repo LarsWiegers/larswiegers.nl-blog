@@ -15,6 +15,10 @@ class Post extends Model
 		'author_id', 'created_at', 'updated_at', 'public', 'title', 'content'
 	];
 
+	protected $attributes = [
+		'public' => 0 // default is not public
+	];
+
 
 	/**
 	 * The "booting" method of the model.
@@ -24,8 +28,6 @@ class Post extends Model
 	protected static function boot()
 	{
 		parent::boot();
-
-		static::addGlobalScope(new PublicScope);
 	}
 
 	/**

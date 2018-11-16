@@ -41,8 +41,6 @@ class Category extends Model
 	protected static function boot()
 	{
 		parent::boot();
-
-		static::addGlobalScope(new PublicScope);
 	}
 
 	/**
@@ -65,7 +63,7 @@ class Category extends Model
 	 */
 	public function posts()
 	{
-		return $this->hasMany('App\Modules\Blog\Domain\Post');
+		return $this->hasMany('App\Modules\Blog\Domain\Post', 'category_id', 'id');
 	}
 
 }

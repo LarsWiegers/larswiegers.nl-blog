@@ -7,6 +7,8 @@ use App\Modules\Blog\Domain\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class BackendWebPostController extends Controller
 {
@@ -17,13 +19,78 @@ class BackendWebPostController extends Controller
      */
     public function index(Request $request)
     {
-	    $categories = Category::all();
-	    $posts = Post::getLatest(15);
-	    return view('Blog::backend.home',[
+
+    	if($request->get('category') !== null) {
+
+    		$category = Category::find($request->get('category'));
+    		$posts = $category->posts;
+
+	    }else {
+		    $category = null;
+		    $posts = Post::all();
+	    }
+	    return view('Blog::backend.posts.home',[
 	    	'posts' => $posts,
-		    'categories' => $categories,
+		    'category' => $category,
 		    'request' => $request]);
     }
+
+	/**
+	 * Create the specified resource.
+	 *
+	 * @param  int
+	 * @return \Illuminate\Http\Response
+	 */
+	public function create(Request $request)
+	{
+		if($request->get('category') !== null) {
+
+		$category = Category::find($request->get('category'));
+
+		}else {
+			$category = null;
+		}
+
+		return view('Blog::backend.posts.create',[
+			'category' => $category,
+			'categories' => Category::all()
+		]);
+	}
+
+	/**
+	 * store the specified resource.
+	 *
+	 * @param  int
+	 * @return \Illuminate\Http\Response
+	 */
+	public function store(Request $request)
+	{
+		$validator = Validator::make($request->all(), [
+			'title' => 'required|unique:posts|max:255',
+			'content' => 'required',
+			'category' => 'nullable',
+		]);
+
+		if ($validator->fails()) {
+			return redirect()->back()
+			                 ->withErrors($validator)
+			                 ->withInput();
+		}
+
+
+		$slug = str_slug($request->get('title'));
+
+
+		Post::create([
+			'title' => $request->get('title'),
+			'content' => $request->get('content'),
+			'author_id' => Auth::id(),
+			'category_id' => $request->get('category')
+		]);
+
+		return redirect(route('categories.index'));
+	}
+
     /**
      * Display the specified resource.
      *

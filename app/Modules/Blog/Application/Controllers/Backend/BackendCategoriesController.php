@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 
-class BackendCategoriesPostController extends Controller
+class BackendCategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class BackendCategoriesPostController extends Controller
      */
     public function index()
     {
-	    $categories = Category::withoutGlobalScopes()->get();
+	    $categories = Category::all();
 
 	    return view('Blog::backend.categories.home',[
 		    'categories' => $categories]);
@@ -61,6 +61,7 @@ class BackendCategoriesPostController extends Controller
 			? $request->get('slug')
 			: str_slug($request->get('slug'));
 
+		dd("hi");
 
 		Category::create([
 			'title' => $request->get('title'),
@@ -77,22 +78,23 @@ class BackendCategoriesPostController extends Controller
      * @param  int  $postId
      * @return \Illuminate\Http\Response
      */
-    public function show(int $postId)
+    public function show(int $categoryId)
     {
-        $post = Post::findOrFail($postId);
-        return view('Blog::backend.show', ['post' => $post]);
+        $category = Category::findOrFail($categoryId);
+        return redirect(route('backend.posts.index',['category' => $categoryId]));
     }
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param Post $post
+	 * @param int $postId
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit(Post $post)
+	public function edit(int $categoryId)
 	{
-		return view('Blog::backend.edit', ['post' => $post]);
+		return view('Blog::backend.categories.edit',
+			['category' => Category::findOrFail($categoryId)]);
 	}
 
 	/**
@@ -101,9 +103,33 @@ class BackendCategoriesPostController extends Controller
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, Post $post)
+	public function update(Request $request, int $categoryId)
 	{
-		return view('Blog::backend.show', ['post' => $post]);
+		$validator = Validator::make($request->all(), [
+			'title' => 'required|unique:categories|max:255',
+			'description' => 'required',
+			'slug' => 'nullable',
+		]);
+
+		if ($validator->fails()) {
+			return redirect()->back()
+			                 ->withErrors($validator)
+			                 ->withInput();
+		}
+
+
+		$slug = ($request->get('slug') !== '' ||
+		         $request->get('slug') !== null)
+			? $request->get('slug')
+			: str_slug($request->get('slug'));
+
+		$category = Category::findOrFail($categoryId);
+		$category->title = $request->get('title');
+		$category->description = $request->get('description');
+		$category->slug = $slug;
+		$category->save();
+
+		return redirect(route('backend.categories.index'));
 	}
 
 	/**

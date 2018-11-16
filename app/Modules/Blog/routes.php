@@ -12,6 +12,6 @@ Route::group(['namespace' => 'App\Modules\Blog\Application\Controllers'], functi
 Route::group(['namespace' => 'App\Modules\Blog\Application\Controllers\Backend',
 	'prefix' => 'backend/blog',
 	'middleware' => ['web', 'auth']], function () {
-	Route::resource('post', 'BackendWebPostController');
-	Route::resource('categories', 'BackendCategoriesPostController', ['as' => 'backend']);
+	Route::resource('posts', 'BackendWebPostController', ['as' => 'backend']);
+	Route::resource('categories', 'BackendCategoriesController', ['as' => 'backend']);
 });
