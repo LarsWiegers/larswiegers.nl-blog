@@ -12,6 +12,7 @@ Route::group(['namespace' => 'App\Modules\Blog\Application\Controllers'], functi
 Route::group(['namespace' => 'App\Modules\Blog\Application\Controllers\Backend',
 	'prefix' => 'backend/blog',
 	'middleware' => ['web', 'auth']], function () {
+	Route::get('/', 'BackendDashboardController@index')->name('backend.blog.index');
 	Route::resource('posts', 'BackendWebPostController', ['as' => 'backend']);
 	Route::resource('categories', 'BackendCategoriesController', ['as' => 'backend']);
 });
