@@ -23,8 +23,9 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <table class="table">
-                                <thead>
+                            <div class="table-responsive">
+                                <table class="table ">
+                                    <thead>
                                     <tr>
                                         <th>title</th>
                                         <th>content</th>
@@ -36,8 +37,8 @@
                                         <th>delete</th>
                                         <th>author</th>
                                     </tr>
-                                </thead>
-                                <tbody>
+                                    </thead>
+                                    <tbody>
                                     @foreach($posts as $post)
                                         <tr>
                                             <td>
@@ -79,9 +80,10 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                </tbody>
+                                    </tbody>
 
-                            </table>
+                                </table>
+                            </div>
                             @if(count($posts) <= 0)
                                 <h1>There are no posts yet!</h1>
                             @endif

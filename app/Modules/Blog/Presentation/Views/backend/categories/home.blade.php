@@ -16,8 +16,9 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <table class="table">
-                                <thead>
+                            <div class="table-responsive">
+                                <table class="table ">
+                                    <thead>
                                     <tr>
                                         <th>title</th>
                                         <th>description</th>
@@ -30,8 +31,8 @@
                                         <th>delete</th>
                                         <th>posts</th>
                                     </tr>
-                                </thead>
-                                <tbody>
+                                    </thead>
+                                    <tbody>
                                     @foreach($categories as $category)
                                         <tr>
                                             <td>
@@ -74,14 +75,10 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                </tbody>
+                                    </tbody>
 
-                            </table>
-                            <a href="{{ route('logout') }}"
-
-                            </a>
-
-
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
