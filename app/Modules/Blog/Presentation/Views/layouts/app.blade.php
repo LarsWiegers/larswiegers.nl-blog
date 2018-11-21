@@ -56,5 +56,6 @@
 @yield("body")
 @yield("scripts")
 <script src="{{asset("js/blog.js")}}"></script>
+<script src="{{asset("main.js")}}"></script>
 </body>
 </html>
