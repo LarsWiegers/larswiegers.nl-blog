@@ -1,7 +1,7 @@
 class topBar {
 	constructor () {
 		this._topBar = document.querySelector('.top-bar');
-		this._topBar.classList.add("top-bar--allow-scroll")
+		this._topBar.classList.add("top-bar--allow-scroll");
 		this.onScroll = this.onScroll.bind(this);
 		this.addEventListeners();
 
