@@ -32,10 +32,10 @@ class BlogCategoryChooser {
 			return;
 		}
 		let slug = this.getSlug(event.target.getAttribute('href'));
-
+		console.log(slug);
 		this.getJSON('/api/blog/' + slug, this.updatePosts, function (status) {
-			// TODO DO THIS BETTER
-			alert(status);
+			// if the api does not respons well we send user to the web route instead
+			window.location.href = event.target.getAttribute('href');
 		});
 
 
@@ -128,7 +128,7 @@ class BlogCategoryChooser {
 			'OTransition':'oTransitionEnd',
 			'MozTransition':'transitionend',
 			'WebkitTransition':'webkitTransitionEnd'
-		}
+		};
 
 		for(t in transitions){
 			if( el.style[t] !== undefined ){

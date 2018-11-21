@@ -27,13 +27,18 @@ class WebCategoriesController extends Controller
      * @param  int  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show(string $slug)
+    public function show(Request $request, string $slug)
     {
         $category = Category::where('slug', '=', $slug)->get()->first();
         if(!$category) {
 	        abort(404);
         }
         $posts = $category->posts;
-        return view('Blog::pages.categories.show', ['category' => $category, 'posts' => $posts]);
+        return view('Blog::pages.categories.show', [
+        	'category' => $category,
+	        'posts' => $posts,
+	        'request' => $request,
+	        'categories' => Category::all()
+        ]);
     }
 }

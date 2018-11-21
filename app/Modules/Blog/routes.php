@@ -1,10 +1,19 @@
 <?php
 
 Route::group(['namespace' => 'App\Modules\Blog\Application\Controllers'], function () {
-	Route::resource('blog', 'WebPostController')->only([
+	Route::get('blog', 'WebCategoriesController@index')->name('blog.index');
+
+	Route::get('blog/categories/all', function () {
+		return redirect(route('categories.index'));
+	});
+
+	Route::resource('blog/categories', 'WebCategoriesController')->only([
 		'index', 'show'
 	]);
-	Route::resource('blog/categories', 'WebCategoriesController')->only([
+
+
+
+	Route::resource('blog/posts', 'WebPostController')->only([
 		'index', 'show'
 	]);
 });

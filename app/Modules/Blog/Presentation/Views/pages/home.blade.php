@@ -13,7 +13,7 @@
             @else
             <section class="blog-pills">
                 <ul class="blog-pills__list">
-                    @if($request->segment(2) == null)
+                    @if($request->segment(3) == null)
                         <li class="blog-pills__list__item blog-pills__list__item--active">
                     @else
                         <li class="blog-pills__list__item">
@@ -21,7 +21,7 @@
                             <a href="{{route('categories.show', ['slug' => 'all'])}}" class="blog-pills__list__link">All</a>
                         </li>
                         @foreach($categories as $category)
-                            @if($category->slug == $request->segment(2))
+                            @if($category->slug == $request->segment(3))
                                 <li class="blog-pills__list__item blog-pills__list__item--active">
                             @else
                                 <li class="blog-pills__list__item">
@@ -37,7 +37,7 @@
             <section class="blog-cards">
                 @foreach($posts as $post)
                     <div class="blog-cards__card">
-                        <a href="{{route("blog.show",['id' => $post->id])}}">
+                        <a href="{{route("posts.show",['id' => $post->id])}}">
                             <div class="blog-cards__card__image-container">
                                 <img class="blog-cards__card__image" src="https://cdn.jevelin.shufflehound.com/wp-content/uploads/sites/11/2016/11/1-1024x777.jpg">
                             </div>
