@@ -1,4 +1,4 @@
-@extends('SocialMedia::layouts.app')
+@extends('Backend::layouts.app')
 
 @section('content')
     <div class="container">
