@@ -55,6 +55,6 @@
     </section>
 @yield("body")
 @yield("scripts")
-<script src="{{asset("js/app.js")}}"></script>
+<script src="{{asset("js/blog.js")}}"></script>
 </body>
 </html>
