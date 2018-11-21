@@ -20,4 +20,4 @@ mix.browserSync('localhost:8000')
 	.sass('app/Modules/Backend/Presentation/Assets/app.scss', 'public/css/backend.css')
 
 	.js('app/Modules/Blog/Presentation/Assets/js/app.js', 'public/js/blog.js')
-    .sass('resources/sass/app.scss', 'public/css');
+	.sass('app/Modules/Blog/Presentation/Assets/app.scss', 'public/css/app.css');

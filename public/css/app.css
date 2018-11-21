@@ -3195,10 +3195,6 @@ h2 {
 }
 
 @media screen and (min-width: 1023px) {
-  .top-bar {
-    padding: 0 1.5rem;
-  }
-
   .top-bar__nav-mobile {
     display: none;
   }
@@ -3213,6 +3209,7 @@ h2 {
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: flex-end;
+    padding: 0.2em 0.5em;
   }
 
   .top-bar__nav__link {
