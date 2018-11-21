@@ -27,6 +27,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+	    $schedule->call('social:gather')->dailyAt('23:00');
     }
 
     /**
