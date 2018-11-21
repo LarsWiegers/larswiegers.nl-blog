@@ -11475,3 +11475,83 @@ h2 {
   color: red;
 }
 
+img {
+  max-width: 100%;
+}
+
+.social-box {
+  border-radius: 5px;
+  background-repeat: no-repeat !important;
+  margin-left: 7.5px;
+  margin-right: 7.5px;
+  padding-top: 7.5px;
+  min-height: 115px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.social-box a {
+  color: white;
+  display: block;
+}
+
+.social-box a .url-beam {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.social-box a .url-beam i {
+  margin-left: 10px;
+}
+
+.instagram {
+  color: white;
+  background: #0e68ce url(/images/instagramlogo.png?c61ce26bd0a66d333bc26a372a720903);
+  background-position: 95% 10%;
+  background-size: 25px 25px;
+  margin-left: 30px;
+}
+
+.instagram .url-beam {
+  background: #1f81f0;
+}
+
+@media only screen and (max-width: 992px) {
+  .instagram {
+    margin-left: 7.5px;
+  }
+}
+
+.youtube {
+  color: white;
+  background: #ee0f0f url(/images/youtubelogo.svg?5bce455b7d1e0e07b6aecb1a637feefe);
+  background-position: 95% 12%;
+  background-size: 60px 25px;
+}
+
+.youtube .url-beam {
+  background: #f33d3d;
+}
+
+.twitter {
+  color: white;
+  background: #433e90 url(/images/twitterlogo.png?0cf62d06b22ed1f1302f7173f7a3eb60);
+  background-position: 95% 10%;
+  background-size: 30px 25px;
+}
+
+.twitter .url-beam {
+  background: #544eb3;
+}
+

@@ -38,6 +38,11 @@
     </div>
 @endsection
 @section("scripts")
+    @if(!is_null($chart))
+        @yield('scripts')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+        {!! $chart->script() !!}
+    @endif
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script>
 		const timeFormat = 'MM/DD/YYYY HH:mm';
