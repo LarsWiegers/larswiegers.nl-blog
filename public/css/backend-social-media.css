@@ -1,0 +1,38 @@
+* {
+  font-family: 'Nunito', 'sans-serif';
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+a {
+  color: #0f0f0f;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+.social-boxes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.social-box {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 30%;
+          flex: 0 0 30%;
+  padding: 5px 13px;
+}
+

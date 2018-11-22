@@ -1,5 +1,9 @@
 @extends('Backend::layouts.app')
 
+@section('styles')
+    <link rel="stylesheet" href="{{asset('css/backend-social-media.css')}}" type="text/css">
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -8,18 +12,21 @@
                     <div class="panel-heading">SocialMedia</div>
                     <div class="panel-body">
                         @if(isset($accounts))
-                            @foreach($accounts as $account)
-                                <div class="col-md-3 {{strtolower($account->accountType->name)}} social-box">
-                                    <h3>{{$account->getLatestCount()}}</h3>
-                                    <p>{{$account->accountType->name}}</p>
-                                    <a href="{{$account->url}}">
-                                        <div class="url-beam">
-                                            Ga naar {{$account->accountType->name}}
-                                            <i class="fa fa-arrow-circle-right"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endforeach
+                            <div class="social-boxes">
+                                @foreach($accounts as $account)
+                                    <div class="{{strtolower($account->accountType->name)}} social-box">
+                                        <h3>{{$account->getLatestCount()}}</h3>
+                                        <p>{{$account->accountType->name}}</p>
+                                        <a href="{{$account->url}}">
+                                            <div class="url-beam">
+                                                Ga naar {{$account->accountType->name}}
+                                                <i class="fa fa-arrow-circle-right"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
+
                         @endif
                         <div class="container-fluid">
                             <div class="col-md-12">
