@@ -9,6 +9,7 @@ Route::group([
 	'middleware' => 'web'], function (){
 	Route::get('login', 'LoginController@showLoginForm')->name('login');
 	Route::post('login', 'LoginController@login');
+	Route::get('logout', 'LoginController@logout')->name('logout');
 	Route::post('logout', 'LoginController@logout')->name('logout');
 
 // Registration Routes...
