@@ -13,7 +13,7 @@ class BlogCategoryChooser {
 			link.addEventListener('click' , self.chosenCategory, true);
 		});
 	}
-	getSlug(href) {
+	 getSlug(href) {
 		let segments = href.split('/');
 		return segments[segments.length - 1];
 	}
@@ -32,13 +32,17 @@ class BlogCategoryChooser {
 			return;
 		}
 		let slug = this.getSlug(event.target.getAttribute('href'));
-		console.log(slug);
-		this.getJSON('/api/blog/' + slug, this.updatePosts, function (status) {
+		let title = event.target.innerText;
+		let self = this;
+		let href = event.target.getAttribute('href');
+
+		this.getJSON('/api/posts/' + slug, function(data) {
+			self.updatePosts(data)
+		}, function (status) {
 			// if the api does not respons well we send user to the web route instead
-			window.location.href = event.target.getAttribute('href');
+			window.location.href = href;
 		});
-
-
+		self.updateUrl(title, href);
 	}
 
 	updateActivePills(event) {
@@ -65,8 +69,9 @@ class BlogCategoryChooser {
 			parent.removeChild(currentPosts[i -1]);
 		}
 
-		self.getCards().forEach(function (htmlPost, index) {
-			self.whichTransitionEvent() && htmlPost.addEventListener(self.whichTransitionEvent(), function () {
+		this.getCards().forEach(function (htmlPost, index) {
+			self.whichTransitionEvent() && htmlPost.addEventListener(
+				self.whichTransitionEvent(), function () {
 				if(newPostsData[index] !== undefined){
 					self.replaceTextOnCard(htmlPost, newPostsData[index]);
 					self.updateCommentCount(htmlPost, newPostsData[index]);
@@ -80,9 +85,10 @@ class BlogCategoryChooser {
 			});
 		}, 1500);
 
+		return Promise.resolve();
 	}
 
-	replaceTextOnCard(htmlPost, postData) {
+	 replaceTextOnCard(htmlPost, postData) {
 		let contentContainer = htmlPost.querySelector('.blog-cards__card__text-container');
 		let content =  contentContainer.querySelector('.content');
 		let title = contentContainer.querySelector('.title');
@@ -90,10 +96,10 @@ class BlogCategoryChooser {
 		title.textContent = postData.title;
 	}
 
-	getContainer () {
+	 getContainer () {
 		return document.querySelector('.blog-cards');
 	}
-	getCards() {
+	 getCards() {
 		return document.querySelectorAll('.blog-cards__card');
 	}
 
@@ -120,7 +126,7 @@ class BlogCategoryChooser {
 	}
 
 	/* From Modernizr */
-	whichTransitionEvent() {
+	 whichTransitionEvent() {
 		let t;
 		let el = document.createElement('fakeelement');
 		let transitions = {
@@ -137,12 +143,17 @@ class BlogCategoryChooser {
 		}
 	}
 
-	updateCommentCount(post, newPostsData) {
+	 updateCommentCount(post, newPostsData) {
 		let commentSection = post.querySelector('.blog-cards__card__comment-section');
 		let bubble = commentSection.querySelector('.blog-cards__card__comment-bubble');
 		if(newPostsData.commentCount !== undefined) {
 			bubble.innerText = newPostsData.commentCount;
 		}
+	}
+
+	updateUrl(title, href) {
+	 	console.log(title, href);
+		history.pushState(null, title, href);
 	}
 }
 new BlogCategoryChooser();

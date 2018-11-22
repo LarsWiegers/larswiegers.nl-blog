@@ -174,11 +174,17 @@ var BlogCategoryChooser = function () {
 				return;
 			}
 			var slug = this.getSlug(event.target.getAttribute('href'));
-			console.log(slug);
-			this.getJSON('/api/blog/' + slug, this.updatePosts, function (status) {
+			var title = event.target.innerText;
+			var self = this;
+			var href = event.target.getAttribute('href');
+
+			this.getJSON('/api/posts/' + slug, function (data) {
+				self.updatePosts(data);
+			}, function (status) {
 				// if the api does not respons well we send user to the web route instead
-				window.location.href = event.target.getAttribute('href');
+				window.location.href = href;
 			});
+			self.updateUrl(title, href);
 		}
 	}, {
 		key: 'updateActivePills',
@@ -206,7 +212,7 @@ var BlogCategoryChooser = function () {
 				parent.removeChild(currentPosts[i - 1]);
 			}
 
-			self.getCards().forEach(function (htmlPost, index) {
+			this.getCards().forEach(function (htmlPost, index) {
 				self.whichTransitionEvent() && htmlPost.addEventListener(self.whichTransitionEvent(), function () {
 					if (newPostsData[index] !== undefined) {
 						self.replaceTextOnCard(htmlPost, newPostsData[index]);
@@ -220,6 +226,8 @@ var BlogCategoryChooser = function () {
 					card.classList.remove('blog-cards__card--blurred');
 				});
 			}, 1500);
+
+			return Promise.resolve();
 		}
 	}, {
 		key: 'replaceTextOnCard',
@@ -291,6 +299,12 @@ var BlogCategoryChooser = function () {
 			if (newPostsData.commentCount !== undefined) {
 				bubble.innerText = newPostsData.commentCount;
 			}
+		}
+	}, {
+		key: 'updateUrl',
+		value: function updateUrl(title, href) {
+			console.log(title, href);
+			history.pushState(null, title, href);
 		}
 	}]);
 

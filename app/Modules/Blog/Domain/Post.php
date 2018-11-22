@@ -45,6 +45,11 @@ class Post extends Model
 		return self::OrderByCreatedDate()->take($howMany)->get();
 	}
 
+	public function scopePublic($query)
+	{
+		return $query->where('public', '=', true);
+	}
+
 	/**
 	 * Get the phone record associated with the user.
 	 */

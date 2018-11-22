@@ -16,6 +16,17 @@ Route::group(['namespace' => 'App\Modules\Blog\Application\Controllers'], functi
 	Route::resource('blog/posts', 'WebPostController')->only([
 		'index', 'show'
 	]);
+
+	Route::apiResource('api/categories', 'ApiCategoryController')->names([
+		'index' => 'blog.api.categories.index',
+		'show' => 'blog.api.categories.show'
+	])->only(['index', 'show']);
+
+	Route::apiResource('api/posts', 'ApiPostController')->names([
+		'index' => 'blog.api.posts.index',
+		'show' => 'blog.api.posts.show'
+	])->only(['index', 'show']);
+
 });
 
 Route::group(['namespace' => 'App\Modules\Blog\Application\Controllers\Backend',

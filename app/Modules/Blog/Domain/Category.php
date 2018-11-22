@@ -43,6 +43,11 @@ class Category extends Model
 		parent::boot();
 	}
 
+	public function scopePublic($query)
+	{
+		return $query->where('public', '=', true);
+	}
+
 	/**
 	 * Scope a query to only include popular users.
 	 *
