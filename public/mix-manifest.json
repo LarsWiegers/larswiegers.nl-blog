@@ -1,6 +1,7 @@
 {
-    "/js/blog.js": "/js/blog.js",
+    "/js/backend.js": "/js/backend.js",
     "/css/backend.css": "/css/backend.css",
     "/css/app.css": "/css/app.css",
+    "/js/blog.js": "/js/blog.js",
     "/css/home-main.css": "/css/home-main.css"
 }

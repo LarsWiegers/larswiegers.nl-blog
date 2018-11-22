@@ -18,6 +18,7 @@ mix.browserSync('localhost:8000')
 	.copy('app/Modules/User/Presentation/Assets/images', 'public/images')
 
 	.sass('app/Modules/Backend/Presentation/Assets/app.scss', 'public/css/backend.css')
+	.js('app/Modules/Backend/Presentation/Assets/js/app.js', 'public/js/backend.js')
 
 	.js('app/Modules/Blog/Presentation/Assets/js/app.js', 'public/js/blog.js')
 	.sass('app/Modules/Blog/Presentation/Assets/app.scss', 'public/css/app.css');
