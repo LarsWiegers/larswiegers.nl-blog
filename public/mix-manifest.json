@@ -2,6 +2,7 @@
     "/js/backend.js": "/js/backend.js",
     "/css/backend.css": "/css/backend.css",
     "/css/app.css": "/css/app.css",
+    "/css/backend-blog.css": "/css/backend-blog.css",
     "/js/blog.js": "/js/blog.js",
     "/css/home-main.css": "/css/home-main.css"
 }

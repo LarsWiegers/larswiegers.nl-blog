@@ -1,5 +1,7 @@
-@extends('Blog::layouts.app')
-
+@extends('Backend::layouts.app')
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="{{asset('css/backend-blog.css')}}">
+@endsection
 @section('content')
     <div class="container">
         <div class="row">

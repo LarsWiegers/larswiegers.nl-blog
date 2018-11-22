@@ -29,7 +29,7 @@
                                            ], $errors) }}
                                 {{ Form::textGroup([
                                                'name' => 'slug',
-                                               'value' => old('slug') === null ? $category->title : old('slug'),
+                                               'value' => old('slug') === null ? $category->slug : old('slug'),
                                                'label' => 'slug',
                                                'required' => 'required'
                                            ], $errors) }}
