@@ -16,28 +16,28 @@
 <body>
 <div id="app">
     @component("Blog::layouts.navbar")@endcomponent
-        @component("Blog::layouts.header-banner")
-            @slot('backgroundUrl')
-                @if(View::hasSection('headerBannerBackgroundUrl'))
-                    @yield('headerBannerBackgroundUrl')
+    @component("Blog::layouts.header-banner")
+        @slot('backgroundUrl')
+            @if(View::hasSection('headerBannerBackgroundUrl'))
+                @yield('headerBannerBackgroundUrl')
                 @else
-                    https://cdn.jevelin.shufflehound.com/wp-content/uploads/sites/11/2016/11/Blog_title_image.jpg
-                @endif
-            @endslot
-            @slot('mainTitle')
-                @if(View::hasSection('headerBannerMainTitle'))
-                    @yield('headerBannerMainTitle')
-                @else
-                    Your ocean of posts
-                @endif
-            @endslot
-            @slot('subTitle')
+                https://cdn.jevelin.shufflehound.com/wp-content/uploads/sites/11/2016/11/Blog_title_image.jpg
+            @endif
+        @endslot
+        @slot('mainTitle')
+            @if(View::hasSection('headerBannerMainTitle'))
+                @yield('headerBannerMainTitle')
+            @else
+                Your ocean of posts
+            @endif
+        @endslot
+        @slot('subTitle')
                 @if(View::hasSection('headerBannerSubTitle'))
                     @yield('headerBannerSubTitle')
                 @else
                     By Lars Wiegers
                 @endif
-            @endslot
+        @endslot
         @endcomponent
 @yield("body")
 @yield("scripts")

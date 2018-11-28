@@ -78,12 +78,14 @@ class BackendWebPostController extends Controller
 		}
 
 
-		$slug = str_slug($request->get('title'));
+		$slug = $request->get('slug') !== null ? $request->get('slug') :
+			str_slug($request->get('title'));
 
 
 		Post::create([
 			'title' => $request->get('title'),
 			'content' => $request->get('content'),
+			'slug' => $slug,
 			'author_id' => Auth::id(),
 			'category_id' => $request->get('category')
 		]);
@@ -110,9 +112,12 @@ class BackendWebPostController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit(Post $post)
+	public function edit(Request $request, $postId)
 	{
-		return view('Blog::backend.edit', ['post' => $post]);
+		return view('Blog::backend.posts.edit', [
+			'categories' => Category::all(),
+			'request' => $request,
+			'post' => Post::findOrFail($postId)]);
 	}
 
 	/**

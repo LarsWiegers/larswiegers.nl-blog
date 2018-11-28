@@ -27,12 +27,11 @@ class WebPostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $postId
      * @return \Illuminate\Http\Response
      */
-    public function show(string $postSlug)
+	public function show(Request $request, string $slug)
     {
-	    $post = Post::where('slug', '=', $postSlug)->get()->first();
+	    $post = Post::where('slug', '=', $slug)->get()->first();
 	    if(!$post) {
 		    abort(404);
 	    }
