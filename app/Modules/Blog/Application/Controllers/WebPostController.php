@@ -30,9 +30,12 @@ class WebPostController extends Controller
      * @param  int  $postId
      * @return \Illuminate\Http\Response
      */
-    public function show(int $postId)
+    public function show(string $postSlug)
     {
-        $post = Post::findOrFail($postId);
-        return view('Blog::pages.show', ['post' => $post]);
+	    $post = Post::where('slug', '=', $postSlug)->get()->first();
+	    if(!$post) {
+		    abort(404);
+	    }
+        return view('Blog::pages.posts.show', ['post' => $post]);
     }
 }

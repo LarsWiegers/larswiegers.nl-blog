@@ -12,13 +12,22 @@ class Post extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		'author_id', 'created_at', 'updated_at', 'public', 'title', 'content'
+		'author_id', 'created_at', 'updated_at', 'public', 'title', 'content', 'slug'
 	];
 
 	protected $attributes = [
 		'public' => 0 // default is not public
 	];
 
+	/**
+	 * Get the route key for the model.
+	 *
+	 * @return string
+	 */
+	public function getRouteKeyName()
+	{
+		return 'slug';
+	}
 
 	/**
 	 * The "booting" method of the model.
