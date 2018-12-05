@@ -48,7 +48,7 @@
                                                 {{$post->content}}
                                             </td>
                                             <td>
-                                                {{($post->title === 1 ? 'yes' : 'no')}}
+                                                {{($post->public === 1 ? 'yes' : 'no')}}
                                             </td>
                                             <td>
                                                 {{$post->created_at}}
