@@ -54,13 +54,18 @@ class Post extends Model
 		return self::OrderByCreatedDate()->take($howMany)->public()->get();
 	}
 
+	/**
+	 * @param $query
+	 *
+	 * @return mixed
+	 */
 	public function scopePublic($query)
 	{
 		return $query->where('public', '=', true);
 	}
 
 	/**
-	 * Get the phone record associated with the user.
+	 * Get the author who wrote the post.
 	 */
 	public function author()
 	{
