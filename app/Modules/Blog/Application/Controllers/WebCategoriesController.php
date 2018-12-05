@@ -21,9 +21,7 @@ class WebCategoriesController extends Controller
 	 */
 	public function index(Request $request)
     {
-	    $categories = Category::all();
-	    $posts = Post::getLatest(15);
-	    return view('Blog::pages.home',['posts' => $posts, 'categories' => $categories,'request' => $request]);
+	    return view('Blog::pages.home',['request' => $request]);
     }
     /**
      * Display the specified resource.
