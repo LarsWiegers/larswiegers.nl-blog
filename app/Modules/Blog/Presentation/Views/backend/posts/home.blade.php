@@ -57,8 +57,8 @@
                                                 {{$post->updated_at}}
                                             </td>
                                             <td>
-                                                <a href="{{route('backend.posts.edit',
-                                                ['category' => $post->id])}}">
+                                                <a href="{{route('posts.show',
+                                                ['slug' => $post->slug])}}">
                                                     <i class="fa fa-edit"></i></a>
                                             </td>
                                             <td>
