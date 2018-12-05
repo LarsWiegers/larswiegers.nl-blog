@@ -33,6 +33,6 @@ Route::group(['namespace' => 'App\Modules\Blog\Application\Controllers\Backend',
 	'prefix' => 'backend/blog',
 	'middleware' => ['web', 'auth']], function () {
 	Route::get('/', 'BackendDashboardController@index')->name('backend.blog.index');
-	Route::resource('posts', 'BackendWebPostController', ['as' => 'backend']);
+	Route::resource('posts', 'BackendWebPostController', ['as' => 'backend'])->only(["index","edit", "update","create","destroy"]);
 	Route::resource('categories', 'BackendCategoriesController', ['as' => 'backend']);
 });

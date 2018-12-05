@@ -10,16 +10,21 @@
                     <div class="panel-body">
                         <div class="container-fluid">
                             <div class="col-md-12">
-                                {!! Form::open(['url' => route('backend.posts.store'), 'method' => 'POST']) !!}
+                                @if($type === "create")
+                                    {!! Form::open(['url' => route('backend.posts.store'), 'method' => 'POST']) !!}
+                                    @else
+                                    {!! Form::open(['url' => route('backend.posts.update', ['post' => $post->id]), 'method' => 'PUT']) !!}
+                                @endif
+
                                 {{ Form::textGroup([
                                                'name' => 'title',
-                                               'value' => old('title'),
+                                               'value' => old('title')  === null ? $post->title : old('title'),
                                                'label' => 'The post title',
                                                'required' => 'required'
                                            ], $errors) }}
                                 {{ Form::textAreaGroup([
                                                'name' => 'content',
-                                               'value' => old('content'),
+                                               'value' => old('content')  === null ? $post->content : old('content'),
                                                'label' => 'The content',
                                                'required' => 'required',
                                                'cols' => 10,
@@ -27,21 +32,21 @@
                                            ], $errors) }}
                                 {{ Form::textGroup([
                                                'name' => 'slug',
-                                               'value' => old('slug')  === null ? "" : old('slug'),
+                                               'value' => old('slug')  === null ? $post->slug : old('slug'),
                                                'label' => 'The slug'
                                            ], $errors) }}
                                 @if(!is_null($category))
                                     {{ Form::selectGroup([
-                                               'name' => 'category',
-                                               'value' => old('category'),
+                                               'name' => 'category_id',
+                                               'value' => old('category_id')  === null ? $post->category_id : old('category_id'),
                                                'label' => 'category',
                                                'selected' => $category,
                                                'options' => $categories
                                            ], $errors) }}
-                                    @else
+                                @else
                                     {{ Form::selectGroup([
-                                              'name' => 'category',
-                                              'value' => old('category'),
+                                              'name' => 'category_id',
+                                              'value' => old('category_id')  === null ? $post->category_id : old('category_id'),
                                               'label' => 'category',
                                               'options' => $categories
                                           ], $errors) }}
@@ -49,10 +54,10 @@
 
                                 <div class="row">
                                     <div class="col-md-2 col-md-offset-2">
-                                        {!! Form::submit('create', [ 'class' => 'form-control']) !!}
+                                        {!! Form::submit('create',
+                                        [ 'class' => 'form-control']) !!}
                                     </div>
                                 </div>
-
                                 {!! Form::close() !!}
                             </div>
                         </div>
@@ -61,4 +66,4 @@
             </div>
         </div>
     </div>
-@endsection("content")
+@endsection

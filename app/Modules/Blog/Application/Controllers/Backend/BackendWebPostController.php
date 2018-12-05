@@ -12,6 +12,25 @@ use Illuminate\Support\Facades\Validator;
 
 class BackendWebPostController extends Controller
 {
+
+	private $viewPath = 'Blog::backend.posts.';
+
+
+	/**
+	 * @param $request
+	 *
+	 * @return \Illuminate\Contracts\Validation\Validator
+	 */
+	private function validator($request) {
+		return Validator::make($request->all(), [
+		'title' => 'required|unique:posts,id|max:255',
+		'content' => 'required',
+		'category' => 'nullable',
+		'slug' => 'nullable|unique:posts,id',
+		]);
+	}
+
+
     /**
      * Display a listing of the resource.
      *
@@ -51,8 +70,10 @@ class BackendWebPostController extends Controller
 			$category = null;
 		}
 
-		return view('Blog::backend.posts.create',[
+		return view( $this->viewPath . 'create-edit',[
+			'type' => 'create',
 			'category' => $category,
+			'post' => new Post(),
 			'categories' => Category::all()
 		]);
 	}
@@ -65,12 +86,7 @@ class BackendWebPostController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$validator = Validator::make($request->all(), [
-			'title' => 'required|unique:posts,id|max:255',
-			'content' => 'required',
-			'category' => 'nullable',
-			'slug' => 'nullable|unique:posts,slug',
-		]);
+		$validator = $this->validator($request);
 
 		if ($validator->fails()) {
 			return redirect()->back()
@@ -109,14 +125,18 @@ class BackendWebPostController extends Controller
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param Post $post
+	 * @param Request $request
+	 * @param $postId
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit(Request $request, $postId)
 	{
-		return view('Blog::backend.posts.edit', [
+		return view( $this->viewPath . 'create-edit',[
+			'type' => 'edit',
+			'viewPath' => $this->viewPath,
 			'categories' => Category::all(),
+			'category' => Post::findOrFail($postId)->category,
 			'request' => $request,
 			'post' => Post::findOrFail($postId)]);
 	}
@@ -124,18 +144,16 @@ class BackendWebPostController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \Illuminate\Http\Request $request
+	 * @param $post
+	 *
 	 * @return \Illuminate\Http\Response
 	 */
 	public function update(Request $request, $post)
 	{
 		$post = Post::findOrFail((int) $post);
-		$validator = Validator::make($request->all(), [
-			'title' => 'required|unique:posts,id|max:255',
-			'content' => 'required',
-			'category' => 'nullable',
-			'slug' => 'nullable|unique:posts,slug',
-		]);
+
+		$validator = $this->validator($request);
 
 		if ($validator->fails()) {
 			return redirect()->back()
@@ -144,14 +162,11 @@ class BackendWebPostController extends Controller
 		}
 
 
-		$slug = $request->get('slug') !== null ? $request->get('slug') :
+		$slug = $request->get('slug') !== null ?
+			$request->get('slug') :
 			str_slug($request->get('title'));
 
-		$post->title = $request->get('title');
-		$post->content = $request->get('content');
-		$post->slug = $slug;
-		$post->author_id = Auth::id();
-		$post->category_id = $request->get('category');
+		$post->fill($request->all());
 		$post->save();
 
 		return redirect(route('backend.posts.index'));

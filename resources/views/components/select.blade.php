@@ -15,8 +15,13 @@
             cols="{{array_get($params, 'cols')}}"
             rows="{{array_get($params, 'rows')}}"
                 {{array_get($params, 'required', false) ? 'required' : ''}}>
+
             @foreach($params['options'] as $option)
-                <option value="{{$option->id}}">
+                @if(array_get($params,'selected') == $option)
+                <option value="{{$option->id}}" selected>
+                    @else
+                    <option value="{{$option->id}}">
+                @endif
                     {{$option->title}}
                 </option>
             @endforeach

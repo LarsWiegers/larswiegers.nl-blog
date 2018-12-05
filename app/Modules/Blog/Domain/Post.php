@@ -12,7 +12,7 @@ class Post extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		'author_id', 'created_at', 'updated_at', 'public', 'title', 'content', 'slug'
+		'author_id', 'created_at', 'updated_at', 'public', 'title', 'content', 'category_id', 'slug'
 	];
 
 	protected $attributes = [
@@ -70,6 +70,14 @@ class Post extends Model
 	public function author()
 	{
 		return $this->belongsTo('App\User', 'author_id', 'id');
+	}
+
+	/**
+	 * Get the category to which this post belongs to.
+	 */
+	public function category()
+	{
+		return $this->belongsTo(Category::class, 'category_id', 'id');
 	}
 
 	/**
