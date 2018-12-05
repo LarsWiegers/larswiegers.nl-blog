@@ -51,7 +51,7 @@ class Post extends Model
 	}
 
 	public static function getLatest(int $howMany) {
-		return self::OrderByCreatedDate()->take($howMany)->get();
+		return self::OrderByCreatedDate()->take($howMany)->public()->get();
 	}
 
 	public function scopePublic($query)
