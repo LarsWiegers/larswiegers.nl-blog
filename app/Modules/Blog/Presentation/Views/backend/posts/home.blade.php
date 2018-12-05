@@ -68,9 +68,15 @@
                                             </td>
                                             <td>
                                                 <a href="{{route('backend.posts.destroy',
-                                                ['category' => $post->id])}}">
+                                                ['post' => $post->id])}}"   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form-{{$post->id}}').submit();">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
+                                                <form id="logout-form-{{$post->id}}" action="
+    {{route('backend.posts.destroy', ['post' => $post->id])}}" style="display: none;"  method="post">
+                                                    @method('DELETE')
+                                                    {{ csrf_field() }}
+                                                </form>
                                             </td>
                                             <td>
                                                 <a href="{{route('backend.users.index',

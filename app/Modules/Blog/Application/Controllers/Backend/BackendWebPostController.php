@@ -66,9 +66,10 @@ class BackendWebPostController extends Controller
 	public function store(Request $request)
 	{
 		$validator = Validator::make($request->all(), [
-			'title' => 'required|unique:posts|max:255',
+			'title' => 'required|unique:posts,id|max:255',
 			'content' => 'required',
 			'category' => 'nullable',
+			'slug' => 'nullable|unique:posts,slug',
 		]);
 
 		if ($validator->fails()) {
@@ -90,7 +91,7 @@ class BackendWebPostController extends Controller
 			'category_id' => $request->get('category')
 		]);
 
-		return redirect(route('categories.index'));
+		return redirect(route('backend.posts.index'));
 	}
 
     /**
@@ -126,9 +127,34 @@ class BackendWebPostController extends Controller
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, Post $post)
+	public function update(Request $request, $post)
 	{
-		return view('Blog::backend.show', ['post' => $post]);
+		$post = Post::findOrFail((int) $post);
+		$validator = Validator::make($request->all(), [
+			'title' => 'required|unique:posts,id|max:255',
+			'content' => 'required',
+			'category' => 'nullable',
+			'slug' => 'nullable|unique:posts,slug',
+		]);
+
+		if ($validator->fails()) {
+			return redirect()->back()
+			                 ->withErrors($validator)
+			                 ->withInput();
+		}
+
+
+		$slug = $request->get('slug') !== null ? $request->get('slug') :
+			str_slug($request->get('title'));
+
+		$post->title = $request->get('title');
+		$post->content = $request->get('content');
+		$post->slug = $slug;
+		$post->author_id = Auth::id();
+		$post->category_id = $request->get('category');
+		$post->save();
+
+		return redirect(route('backend.posts.index'));
 	}
 
 	/**
@@ -137,8 +163,9 @@ class BackendWebPostController extends Controller
 	 * @return \Illuminate\Http\Response
 	 * @throws \Exception
 	 */
-	public function destroy(Post $post)
+	public function destroy($postId)
 	{
-		$post->delete();
+		Post::destroy($postId);
+		return back();
 	}
 }

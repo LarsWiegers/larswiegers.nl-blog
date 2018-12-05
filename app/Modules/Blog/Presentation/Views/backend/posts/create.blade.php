@@ -25,9 +25,14 @@
                                                'cols' => 10,
                                                'rows' => 10
                                            ], $errors) }}
+                                {{ Form::textGroup([
+                                               'name' => 'slug',
+                                               'value' => old('slug')  === null ? "" : old('slug'),
+                                               'label' => 'The slug'
+                                           ], $errors) }}
                                 @if(!is_null($category))
                                     {{ Form::selectGroup([
-                                               'name' => 'Category',
+                                               'name' => 'category',
                                                'value' => old('category'),
                                                'label' => 'category',
                                                'selected' => $category,
@@ -35,7 +40,7 @@
                                            ], $errors) }}
                                     @else
                                     {{ Form::selectGroup([
-                                              'name' => 'Category',
+                                              'name' => 'category',
                                               'value' => old('category'),
                                               'label' => 'category',
                                               'options' => $categories

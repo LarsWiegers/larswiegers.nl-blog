@@ -10,7 +10,8 @@
                     <div class="panel-body">
                         <div class="container-fluid">
                             <div class="col-md-12">
-                                {!! Form::open(['url' => route('backend.posts.store'), 'method' => 'POST']) !!}
+                                {!! Form::open(['url' => route('backend.posts.update',
+                                ['post' => $post->id]), 'method' => 'PUT']) !!}
                                 {{ Form::textGroup([
                                                'name' => 'title',
                                                'value' => old('title')  === null ? $post->title : old('title'),

@@ -3456,3 +3456,15 @@ h2 {
   border-bottom: 1px solid;
 }
 
+.post-content {
+  padding: 1em 0;
+  text-align: left;
+}
+
+@media screen and (min-width: 1200px) {
+  .post-content {
+    max-width: 40vw;
+    margin: 0 auto;
+  }
+}
+
