@@ -10,12 +10,16 @@ use Illuminate\Http\Response;
 
 class WebCategoriesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
+
+	/**
+	 *
+	 * Show the categories index.
+	 *
+	 * @param Request $request
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function index(Request $request)
     {
 	    $categories = Category::all();
 	    $posts = Post::getLatest(15);

@@ -10,12 +10,15 @@ use Illuminate\Http\Response;
 
 class WebPostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
+	/**
+	 *
+	 * Display latest posts
+	 *
+	 * @param Request $request
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function index(Request $request)
     {
 	    $categories = Category::all();
 	    $posts = Post::getLatest(15);
@@ -24,12 +27,15 @@ class WebPostController extends Controller
 		    'categories' => $categories,
 		    'request' => $request]);
     }
-    /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-	public function show(Request $request, string $slug)
+
+	/**
+	 * Display the post when given the slug
+	 *
+	 * @param string $slug
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function show(string $slug)
     {
 	    $post = Post::where('slug', '=', $slug)->get()->first();
 	    if(!$post) {
