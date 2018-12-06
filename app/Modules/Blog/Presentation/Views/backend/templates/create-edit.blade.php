@@ -25,10 +25,10 @@
 
 
                                 {{ Form::textGroup([
-                                               'name' => 'name',
-                                               'value' => old('name')  === null ?
-                                               $template->name : old('name'),
-                                               'label' => 'The template name',
+                                               'name' => 'title',
+                                               'value' => old('title')  === null ?
+                                               $template->title : old('title'),
+                                               'label' => 'The template title',
                                                'required' => 'required'
                                            ], $errors) }}
                                 @if(!is_null($template))

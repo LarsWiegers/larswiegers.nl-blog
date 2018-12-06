@@ -20,7 +20,7 @@
                                 <table class="table ">
                                     <thead>
                                     <tr>
-                                        <th>name</th>
+                                        <th>title</th>
                                         <th>path</th>
                                         <th>edit</th>
                                         <th>destroy</th>
@@ -30,7 +30,7 @@
                                     @foreach($templates as $template)
                                         <tr>
                                             <td>
-                                                {{$template->name}}
+                                                {{$template->title}}
                                             </td>
                                             <td>
                                                 {{$template->path}}
