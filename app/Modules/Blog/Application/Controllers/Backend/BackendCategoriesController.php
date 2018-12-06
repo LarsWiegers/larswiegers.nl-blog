@@ -11,6 +11,21 @@ use Illuminate\Support\Facades\Validator;
 
 class BackendCategoriesController extends Controller
 {
+	private $viewPath = 'Blog::backend.categories.';
+
+	/**
+	 * @param $request
+	 *
+	 * @return \Illuminate\Contracts\Validation\Validator
+	 */
+	private function validator($request) {
+		return Validator::make($request->all(), [
+			'title' => 'required|unique:categories|max:255',
+			'description' => 'required',
+			'slug' => 'nullable',
+		]);
+	}
+
     /**
      * Display a listing of the resource.
      *
@@ -32,7 +47,10 @@ class BackendCategoriesController extends Controller
 	 */
 	public function create()
 	{
-		return view('Blog::backend.categories.create');
+		return view( $this->viewPath . 'create-edit',[
+			'type' => 'create',
+			'category' => new Category()
+		]);
 	}
 
 	/**
@@ -43,11 +61,7 @@ class BackendCategoriesController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$validator = Validator::make($request->all(), [
-			'title' => 'required|unique:categories|max:255',
-			'description' => 'required',
-			'slug' => 'nullable',
-		]);
+		$validator = $this->validator($request);
 
 		if ($validator->fails()) {
 			return redirect()->back()
@@ -55,21 +69,13 @@ class BackendCategoriesController extends Controller
 				->withInput();
 		}
 
-
-		$slug = ($request->get('slug') !== '' ||
-		         $request->get('slug') !== null)
-			? $request->get('slug')
-			: str_slug($request->get('slug'));
-
-		dd("hi");
-
 		Category::create([
 			'title' => $request->get('title'),
 			'description' => $request->get('description'),
-			'slug' => str_slug($request->get('title'), '-')
+			'slug' => $request->get('slug')
 		]);
 
-		return redirect(route('categories.index'));
+		return redirect(route('backend.categories.index'));
 	}
 
     /**
@@ -93,8 +99,11 @@ class BackendCategoriesController extends Controller
 	 */
 	public function edit(int $categoryId)
 	{
-		return view('Blog::backend.categories.edit',
-			['category' => Category::findOrFail($categoryId)]);
+		return view( $this->viewPath . 'create-edit',[
+			'type' => 'create',
+			'category' => Category::findOrFail($categoryId)
+		]);
+
 	}
 
 	/**
@@ -105,11 +114,8 @@ class BackendCategoriesController extends Controller
 	 */
 	public function update(Request $request, int $categoryId)
 	{
-		$validator = Validator::make($request->all(), [
-			'title' => 'required|unique:categories|max:255',
-			'description' => 'required',
-			'slug' => 'nullable',
-		]);
+		$category = Category::findOrFail($categoryId);
+		$validator = $this->validator($request);
 
 		if ($validator->fails()) {
 			return redirect()->back()
@@ -117,16 +123,7 @@ class BackendCategoriesController extends Controller
 			                 ->withInput();
 		}
 
-
-		$slug = ($request->get('slug') !== '' ||
-		         $request->get('slug') !== null)
-			? $request->get('slug')
-			: str_slug($request->get('slug'));
-
-		$category = Category::findOrFail($categoryId);
-		$category->title = $request->get('title');
-		$category->description = $request->get('description');
-		$category->slug = $slug;
+		$category->fill($request->all());
 		$category->save();
 
 		return redirect(route('backend.categories.index'));
@@ -138,8 +135,16 @@ class BackendCategoriesController extends Controller
 	 * @return \Illuminate\Http\Response
 	 * @throws \Exception
 	 */
-	public function destroy(Post $post)
+	public function destroy($category)
 	{
-		$post->delete();
+		$category = Category::findOrFail($category);
+		if(count($category->posts)) {
+			foreach($category->posts as $post) {
+				$post->category_id = null;
+				$post->save();
+			}
+		}
+		Category::destroy($category->id);
+		return back();
 	}
 }

@@ -63,9 +63,16 @@
                                             </td>
                                             <td>
                                                 <a href="{{route('backend.categories.destroy',
-                                                ['category' => $category->id])}}">
+                                                ['post' => $category->id])}}"
+                                                   onclick="event.preventDefault();
+                                                        document.getElementById('delete-category-{{$category->id}}').submit();">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
+                                                <form id="delete-category-{{$category->id}}" action="
+    {{route('backend.categories.destroy', ['category' => $category->id])}}" style="display: none;"  method="post">
+                                                    @method('DELETE')
+                                                    {{ csrf_field() }}
+                                                </form>
                                             </td>
                                             <td>
                                                 <a href="{{route('backend.posts.index',

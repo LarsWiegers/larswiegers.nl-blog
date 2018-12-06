@@ -104,7 +104,7 @@ class BackendWebPostController extends Controller
 			'content' => $request->get('content'),
 			'slug' => $slug,
 			'author_id' => Auth::id(),
-			'category_id' => $request->get('category')
+			'category_id' => $request->get('category_id')
 		]);
 
 		return redirect(route('backend.posts.index'));
