@@ -15,11 +15,9 @@
                                 @else
                                 <a href="{{route('backend.posts.create')}}">
                             @endif
-
-
                                 <i class="fa fa-plus"></i>
                             </a>
-                        </div>
+            </div>
                     </div>
                     <div class="panel-body">
                         <div class="row">

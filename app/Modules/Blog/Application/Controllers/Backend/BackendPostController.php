@@ -4,13 +4,14 @@ namespace App\Modules\Blog\Application\Controllers\Backend;
 
 use App\Modules\Blog\Domain\Category;
 use App\Modules\Blog\Domain\Post;
+use App\Modules\Blog\Domain\Template;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class BackendWebPostController extends Controller
+class BackendPostController extends Controller
 {
 
 	private $viewPath = 'Blog::backend.posts.';
@@ -27,6 +28,7 @@ class BackendWebPostController extends Controller
 		'content' => 'required',
 		'category' => 'nullable',
 		'slug' => 'nullable|unique:posts,id',
+		'template_id' => 'required'
 		]);
 	}
 
@@ -48,7 +50,7 @@ class BackendWebPostController extends Controller
 		    $category = null;
 		    $posts = Post::all();
 	    }
-	    return view('Blog::backend.posts.home',[
+	    return view($this->viewPath . 'home',[
 	    	'posts' => $posts,
 		    'category' => $category,
 		    'request' => $request]);
@@ -74,6 +76,8 @@ class BackendWebPostController extends Controller
 			'type' => 'create',
 			'category' => $category,
 			'post' => new Post(),
+			'templates' => Template::all(),
+			'template' => new Template(),
 			'categories' => Category::all()
 		]);
 	}
@@ -110,18 +114,6 @@ class BackendWebPostController extends Controller
 		return redirect(route('backend.posts.index'));
 	}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $postId
-     * @return \Illuminate\Http\Response
-     */
-    public function show(int $postId)
-    {
-        $post = Post::findOrFail($postId);
-        return view('Blog::backend.show', ['post' => $post]);
-    }
-
 	/**
 	 * Show the form for editing the specified resource.
 	 *
@@ -138,6 +130,7 @@ class BackendWebPostController extends Controller
 			'categories' => Category::all(),
 			'category' => Post::findOrFail($postId)->category,
 			'request' => $request,
+			'templates' => Template::all(),
 			'post' => Post::findOrFail($postId)]);
 	}
 

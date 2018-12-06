@@ -33,6 +33,10 @@ Route::group(['namespace' => 'App\Modules\Blog\Application\Controllers\Backend',
 	'prefix' => 'backend/blog',
 	'middleware' => ['web', 'auth']], function () {
 	Route::get('/', 'BackendDashboardController@index')->name('backend.blog.index');
-	Route::resource('posts', 'BackendWebPostController', ['as' => 'backend'])->only(["index","edit", "store", "update","create","destroy"]);
-	Route::resource('categories', 'BackendCategoriesController', ['as' => 'backend'])->only(["index","edit", "store", "update","create","destroy"]);
+	Route::resource('posts', 'BackendPostController', ['as' => 'backend'])
+	     ->only(["index","edit", "store", "update","create","destroy"]);
+	Route::resource('categories', 'BackendCategoriesController', ['as' => 'backend'])
+	     ->only(["index","edit", "store", "update","create","destroy"]);
+	Route::resource('templates', 'BackendTemplatesController', ['as' => 'backend'])
+	     ->only(["index","edit", "store", "update","create","destroy"]);
 });

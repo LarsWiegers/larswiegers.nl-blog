@@ -62,6 +62,11 @@
                                     Posts
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{route('backend.templates.index')}}">
+                                    Templates
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>

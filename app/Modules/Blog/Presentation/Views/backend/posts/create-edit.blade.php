@@ -35,6 +35,22 @@
                                                'value' => old('slug')  === null ? $post->slug : old('slug'),
                                                'label' => 'The slug'
                                            ], $errors) }}
+                                @if(!is_null($template))
+                                {{ Form::selectGroup([
+                                      'name' => 'template_id',
+                                      'value' => old('template_id')  === null ? $post->template_id : old('template_id'),
+                                      'label' => 'Template',
+                                      'selected' => $template,
+                                      'options' => $templates
+                                  ], $errors) }}
+                                @else
+                                {{ Form::selectGroup([
+                                           'name' => 'template_id',
+                                           'value' => old('template_id')  === null ? $post->template_id : old('template_id'),
+                                           'label' => 'Template',
+                                           'options' => $templates
+                                       ], $errors) }}
+                                @endif
                                 @if(!is_null($category))
                                     {{ Form::selectGroup([
                                                'name' => 'category_id',
