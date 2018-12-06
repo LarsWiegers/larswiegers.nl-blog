@@ -5,7 +5,11 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h1>Create a post</h1>
+                        @if($type === "create")
+                            <h1>Create a post</h1>
+                            @else
+                            <h1>Edit a post</h1>
+                        @endif
                     </div>
                     <div class="panel-body">
                         <div class="container-fluid">
