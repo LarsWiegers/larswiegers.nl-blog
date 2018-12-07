@@ -12,7 +12,10 @@ class Post extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		'author_id', 'created_at', 'updated_at', 'public', 'title', 'content', 'category_id', 'slug'
+		'author_id', 'created_at',
+		'updated_at', 'public', 'title',
+		'content', 'category_id', 'slug',
+		'template_id'
 	];
 
 	protected $attributes = [
@@ -78,6 +81,14 @@ class Post extends Model
 	public function category()
 	{
 		return $this->belongsTo(Category::class, 'category_id', 'id');
+	}
+
+	/**
+	 * Get the template which this post uses.
+	 */
+	public function template()
+	{
+		return $this->hasOne(Template::class, 'id', 'template_id');
 	}
 
 	/**

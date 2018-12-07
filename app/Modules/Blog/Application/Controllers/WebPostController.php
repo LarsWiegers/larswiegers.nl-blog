@@ -36,6 +36,7 @@ class WebPostController extends Controller
 	    if(!$post) {
 		    abort(404);
 	    }
-        return view('Blog::pages.posts.show', ['post' => $post]);
+	    $path = explode('.', $post->template->path);
+        return view('Blog::templates.' . $path[0], ['post' => $post]);
     }
 }

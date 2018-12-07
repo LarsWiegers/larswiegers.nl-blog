@@ -15,31 +15,22 @@
 </head>
 <body>
 <div id="app">
-    @component("Blog::layouts.navbar")@endcomponent
-    @component("Blog::layouts.header-banner")
-        @slot('backgroundUrl')
-            @if(View::hasSection('headerBannerBackgroundUrl'))
-                @yield('headerBannerBackgroundUrl')
-                @else
-                https://cdn.jevelin.shufflehound.com/wp-content/uploads/sites/11/2016/11/Blog_title_image.jpg
-            @endif
-        @endslot
-        @slot('mainTitle')
-            @if(View::hasSection('headerBannerMainTitle'))
-                @yield('headerBannerMainTitle')
-            @else
-                Your ocean of posts
-            @endif
-        @endslot
-        @slot('subTitle')
-                @if(View::hasSection('headerBannerSubTitle'))
-                    @yield('headerBannerSubTitle')
-                @else
-                    By Lars Wiegers
-                @endif
-        @endslot
-        @endcomponent
-@yield("body")
+    @extends("Blog::layouts.content")
+    @section("headerBannerMainTitle")
+        {{$post->title}}
+    @endsection
+    @section("headerBannerSubTitle")
+        By {{$post->author->name}}
+    @endsection
+    @section("body")
+        <div id="app">
+            <div class="post-content">
+                <p>
+                    {{$post->content}}
+                </p>
+            </div>
+        </div>
+    @endsection
 @yield("scripts")
 <script src="{{asset("js/blog.js")}}"></script>
 <script src="{{asset("main.js")}}"></script>

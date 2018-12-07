@@ -98,18 +98,12 @@ class BackendPostController extends Controller
 			                 ->withInput();
 		}
 
-
-		$slug = $request->get('slug') !== null ? $request->get('slug') :
-			str_slug($request->get('title'));
-
-
-		Post::create([
-			'title' => $request->get('title'),
-			'content' => $request->get('content'),
-			'slug' => $slug,
-			'author_id' => Auth::id(),
-			'category_id' => $request->get('category_id')
+		$post = array_merge($request->all(), [
+			'author_id' => Auth::id()
 		]);
+
+		Post::create($post);
+
 
 		return redirect(route('backend.posts.index'));
 	}
@@ -130,6 +124,7 @@ class BackendPostController extends Controller
 			'categories' => Category::all(),
 			'category' => Post::findOrFail($postId)->category,
 			'request' => $request,
+			'template' => Template::findOrFail($postId),
 			'templates' => Template::all(),
 			'post' => Post::findOrFail($postId)]);
 	}
