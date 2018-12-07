@@ -1,0 +1,59 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
+// Variables
+@import 'variables';
+
+* {
+  font-family: 'Nunito', 'sans-serif';
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+a {
+  color: #0f0f0f;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+h2 {
+  font-size: 1.5em;
+}
+.visitor-boxes {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.visitor-box {
+  flex: 0 0 30%;
+  padding: 5px 13px;
+  position:relative;
+  transition: transform 350ms ease-in-out;
+
+  color:white;
+  .stats {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 2em;
+  }
+  &:hover {
+    transform: scale(1.05);
+    z-index:2;
+  }
+}
+
+.visitor {
+  &-daily {
+    background-color: rgba(0,180,180,1);
+  }
+  &-monthly {
+    background-color: rgba(180,0,180,1);
+  }
+  &-yearly {
+    background-color: rgba(180,180,0,1);
+  }
+}

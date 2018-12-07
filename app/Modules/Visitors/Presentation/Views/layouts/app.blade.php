@@ -69,9 +69,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="{{route('backend.visitors.home')}}">Visitors</a>
-                    </li>
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">

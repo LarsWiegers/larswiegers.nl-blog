@@ -8,6 +8,7 @@ return  [
 		'Auth',
 		'Backend',
 		'User',
-		'SocialMedia'
+		'SocialMedia',
+		'Visitors'
 	]
 ];
