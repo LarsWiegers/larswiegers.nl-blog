@@ -3257,6 +3257,7 @@ h2 {
   right: 0;
   bottom: 0;
   z-index: -1;
+  background-color: rgba(0, 20, 80, 0.5);
 }
 
 .header-banner__foreground {
