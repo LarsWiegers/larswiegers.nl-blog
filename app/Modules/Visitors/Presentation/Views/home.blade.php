@@ -12,34 +12,57 @@
                         <div class="row">
                             <div class="visitor-boxes">
                                 <div class="visitor-daily visitor-box">
-                                    <h3>32</h3>
+                                    <h3>{{$allToday}}</h3>
                                     <p>Daily Visitors</p>
-                                    @if(true)
+                                    @if($allToday > $previousToday)
                                         <div class="stats visitor-up">
                                             <i class="fa fa-arrow-up"></i>
-                                            <span class="how-much">20 %</span>
+                                            <span class="how-much">
+                                                {{round(($allToday  - $previousToday) / $allToday * 100)}} %
+                                            </span>
+                                        </div>
+                                    @else
+                                        <div class="stats visitor-down">
+                                            <i class="fa fa-arrow-down"></i>
+                                            <span class="how-much">
+                                                {{round(($previousToday - $allToday ) / $previousToday * 100)}} %</span>
                                         </div>
                                     @endif
                                 </div>
                                 <div class="visitor-monthly visitor-box">
-                                    <h3>320</h3>
+                                    <h3>{{$allMonth}}</h3>
                                     <p>Monthly Visitors</p>
-                                    @if(false)
-
-                                        @else
+                                    @if($allMonth > $previousMonth)
+                                        <div class="stats visitor-up">
+                                            <i class="fa fa-arrow-up"></i>
+                                            <span class="how-much">
+                                                {{round(($allMonth - $previousMonth) / $allMonth * 100)}} %
+                                            </span>
+                                        </div>
+                                    @else
                                         <div class="stats visitor-down">
                                             <i class="fa fa-arrow-down"></i>
-                                            <span class="how-much">20 %</span>
+                                            <span class="how-much">
+                                                {{round(($previousMonth  - $allMonth) / $previousMonth * 100)}} %
+                                            </span>
                                         </div>
                                     @endif
                                 </div>
                                 <div class="visitor-yearly visitor-box">
-                                    <h3>32000</h3>
+                                    <h3>{{$allYear}}</h3>
                                     <p>Yearly Visitors</p>
-                                    @if(true)
+                                    @if($allYear > $previousYear)
                                         <div class="stats visitor-up">
                                             <i class="fa fa-arrow-up"></i>
-                                            <span class="how-much">20 %</span>
+                                            <span class="how-much">
+                                                {{round(($allYear  - $previousYear) / $allYear * 100)}} %
+                                            </span>
+                                        </div>
+                                    @else
+                                        <div class="stats visitor-down">
+                                            <i class="fa fa-arrow-down"></i>
+                                            <span class="how-much">
+                                                {{round(($previousYear  - $allYear) / $previousYear * 100)}} %</span>
                                         </div>
                                     @endif
                                 </div>

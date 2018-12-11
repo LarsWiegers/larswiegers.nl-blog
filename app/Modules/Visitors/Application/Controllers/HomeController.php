@@ -3,13 +3,27 @@
 namespace App\Modules\Visitors\Application\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use App\Modules\Visitors\Domain\Visitor;
 
 class HomeController extends Controller {
 
 	public function index() {
-		return view('Visitors::home');
+		$allToday = Visitor::allToday();
+		$allMonth = Visitor::allMonth();
+		$allYear  = Visitor::allYear();
+
+		$previousToday = Visitor::allYesterday();
+		$previousMonth = Visitor::allPreviousMonth();
+		$previousYear = Visitor::allPreviousYear();
+
+
+		return view('Visitors::home', [
+				'allToday' => count($allToday),
+				'allMonth' => count($allMonth),
+				'allYear' => count($allYear),
+				'previousToday' => count($previousToday),
+				'previousMonth' => count($previousMonth),
+				'previousYear' => count($previousYear),
+			]);
 	}
 }
