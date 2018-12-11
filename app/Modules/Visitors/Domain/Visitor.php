@@ -48,4 +48,25 @@ class Visitor extends Model
 		return self::whereBetween('created_at', [$startOfYear, $endOfYear])->get();
 	}
 
+	public static function perMonthOfTheLast12Months() {
+		$startOfYear = Carbon::now()->startOfYear()->subYear();
+		$endOfYear = Carbon::now();
+		return self::whereBetween('created_at', [$startOfYear, $endOfYear])
+          ->get()
+          ->groupBy(function($val) {
+              return Carbon::parse( $val->created_at )->format( 'M' );
+          });
+	}
+
+	public static function perMonthOfLastYear() {
+		$startOfYear = Carbon::now()->startOfYear()->subYear(2);
+		$endOfYear = Carbon::now()->subYear(2);
+		return self::whereBetween('created_at', [$startOfYear, $endOfYear])
+		           ->get()
+		           ->groupBy(function($val) {
+			           return Carbon::parse( $val->created_at )->format( 'M' );
+		           });
+
+	}
+
 }
