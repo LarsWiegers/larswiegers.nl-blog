@@ -60,7 +60,7 @@ class Visitor extends Model
 
 	public static function perMonthOfLastYear() {
 		$startOfYear = Carbon::now()->startOfYear()->subYear(2);
-		$endOfYear = Carbon::now()->subYear(2);
+		$endOfYear = Carbon::now()->endOfYear()->subYear(2);
 		return self::whereBetween('created_at', [$startOfYear, $endOfYear])
 		           ->get()
 		           ->groupBy(function($val) {
