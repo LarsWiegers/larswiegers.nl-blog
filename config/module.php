@@ -4,6 +4,7 @@ return  [
 	'modules' => [
 		'Blog',
 		'Home',
+        'Contact',
 
 		'Auth',
 		'Backend',

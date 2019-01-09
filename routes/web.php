@@ -16,7 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/projects/', function () {
 	return view('welcome');
 })->name('projects.index');
-
-Route::get('/contact/', function () {
-	return view('welcome');
-})->name('contact.index');

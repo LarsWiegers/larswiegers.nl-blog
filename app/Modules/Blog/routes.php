@@ -13,7 +13,7 @@ Route::group(['namespace' => 'App\Modules\Blog\Application\Controllers'], functi
 
 
 
-	Route::resource('blog/posts', 'WebPostController')->only([
+	Route::resource('blog/posts', 'WebContactController')->only([
 		'index', 'show'
 	]);
 
