@@ -1,7 +1,12 @@
+@import 'variables';
+
 .row {
     flex: 1 0 100%;
-    margin: 0.5em auto;
-    max-width: 50vw;
+    margin: 1.5em;
+    @media screen and(min-width: 1023px) {
+        max-width: 50vw;
+        margin: 0.5em auto;
+    }
 
     input, textarea {
         border:1px solid #e3e3e3;
@@ -16,5 +21,30 @@
         width: 102%;
         background-color: #0d6a8b;
         color: white;
+    }
+}
+.alert {
+    position: fixed;
+    left:0;
+    right:0;
+    top: 0;
+    z-index: 1001;
+    padding: 8px;
+    &.alert-success {
+        background-color: $green;
+        color: white;
+    }
+    &.alert-failure {
+        background-color: $red;
+        color: white;
+    }
+    animation: scrollUp 400ms 3000ms ease-in-out forwards;
+}
+@keyframes scrollUp {
+     0% {
+        top: 0;
+    }
+    100% {
+        top: -40px;
     }
 }

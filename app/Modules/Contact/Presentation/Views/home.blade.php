@@ -1,4 +1,4 @@
-@extends("Blog::layouts.app")
+@extends("Contact::layouts.app")
     @section("headerBannerMainTitle")
         Contact
     @endsection
@@ -6,50 +6,34 @@
        Lars Wiegers
     @endsection
     @section("body")
+        @if(session()->has('message'))
+            @if(session()->get('message')['type'] === 'success')
+                @component('components.alert-success', ['message' => session()->get('message')])@endcomponent
+                @else
+                @component('components.alert-failure', ['message' => session()->get('message')])@endcomponent
+            @endif
+        @endif
         {!! Form::open(['route' => 'contact.save']) !!}
-        @csrf
-        <div class="row">
-            <label  for="name">name *<br />
-            </label>
-            <div>
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    class="form-control"
-                    value="{{isset($name) ? $name : ''}}"
-                    placeholder="name"
-                    required>
-            </div>
-        </div>
-        <div class="row">
-            <label  for="email">email *<br />
-            </label>
-            <div>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    class="form-control"
-                    value="{{isset($email) ? $email : ''}}"
-                    placeholder="email"
-                    required>
-            </div>
-        </div>
-        <div class="row">
-            <label  for="text">bericht *<br />
-            </label>
-            <div>
-                <textarea
-                    type="text"
-                    id="text"
-                    name="text"
-                    class="form-control"
-                    rows="8"
-                    placeholder="bericht"
-                    required>{{isset($text) ? $text : ''}}</textarea>
-            </div>
-        </div>
+        {{ Form::textGroup([
+            'name' => 'name',
+            'value' => old('name') === null ? $contactMessage->name : old('name'),
+            'label' => 'name',
+            'required' => 'required'
+        ], $errors) }}
+        {{ Form::textGroup([
+            'name' => 'email',
+            'value' => old('email') === null ? $contactMessage->email : old('email'),
+            'label' => 'email',
+            'required' => 'required'
+        ], $errors) }}
+        {{ Form::textAreaGroup([
+           'name' => 'text',
+           'value' => old('text')  === null ? $contactMessage->text : old('text'),
+           'label' => 'Your message',
+           'required' => 'required',
+           'cols' => 10,
+           'rows' => 10
+       ], $errors) }}
         <div class="row">
             <div>
                 <button type="submit">Send</button>

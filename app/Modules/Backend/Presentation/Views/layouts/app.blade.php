@@ -72,6 +72,11 @@
                     <li>
                         <a href="{{route('backend.visitors.home')}}">Visitors</a>
                     </li>
+                    <li>
+                        <a href="{{route('backend.contact.index')}}">
+                            Contact
+                        </a>
+                    </li>
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">

@@ -14,7 +14,11 @@
             placeholder="{{array_get($params, 'label')}}"
             cols="{{array_get($params, 'cols')}}"
             rows="{{array_get($params, 'rows')}}"
-                {{array_get($params, 'required', false) ? 'required' : ''}}>{{array_get($params, 'value')}}</textarea>
+                {{array_get($params, 'required', false) ? 'required' : ''}}
+            @if(array_get($params, 'read-only', false))
+                readonly
+            @endif
+        >{{array_get($params, 'value')}}</textarea>
         <small class="text-danger">{{ $errors->first(array_get($params, 'name')) }}</small>
     </div>
 </div>
