@@ -5,6 +5,7 @@ return  [
 		'Blog',
 		'Home',
         'Contact',
+        'Projects',
 
 		'Auth',
 		'Backend',

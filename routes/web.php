@@ -10,9 +10,3 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-use Illuminate\Support\Facades\Route;
-
-Route::get('/projects/', function () {
-	return view('welcome');
-})->name('projects.index');
