@@ -6,12 +6,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading panel-heading-crud">
                         <div class="panel-heading-left">
-                            <h1>Categories</h1>
-                        </div>
-                        <div class="panel-heading-right">
-                            <a href="{{route('backend.categories.create')}}">
-                                <i class="fa fa-plus"></i>
-                            </a>
+                            <h1>Contact messages</h1>
                         </div>
                     </div>
                     <div class="panel-body">
