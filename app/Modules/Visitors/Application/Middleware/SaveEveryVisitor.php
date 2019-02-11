@@ -4,7 +4,9 @@ namespace App\Modules\Visitors\Application\Middleware;
 
 use App\Modules\Visitors\Domain\Visitor;
 use Closure;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class SaveEveryVisitor
 {
@@ -18,17 +20,25 @@ class SaveEveryVisitor
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if(Auth::user()) {
-        	Visitor::create([
-        		'ip' => $request->ip(),
-		        'url' => $request->fullUrl(),
-		        'user_id' => Auth::id()
-	        ]);
-        }else {
-	        Visitor::create([
-		        'ip' => $request->ip(),
-		        'url' => $request->fullUrl()
-	        ]);
+        try {
+            if (Auth::user()) {
+                Visitor::create([
+                    'ip' => $request->ip(),
+                    'url' => $request->fullUrl(),
+                    'user_id' => Auth::id()
+                ]);
+            } else {
+                Visitor::create([
+                    'ip' => $request->ip(),
+                    'url' => $request->fullUrl()
+                ]);
+            }
+        } catch (QueryException $e) {
+            if (Auth::user()) {
+                Log::emergency("Tried to log the visitor " . $request->ip() . "");
+            } else {
+                Log::emergency("Tried to log the visitor " . $request->ip() . " for url: " . $request->fullUrl());
+            }
         }
 
         return $next($request);
