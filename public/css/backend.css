@@ -11555,3 +11555,21 @@ img {
   background: #544eb3;
 }
 
+@media screen and (max-width: 800px) {
+    .dropdown-menu {
+        position: relative;
+        border: none;
+        background: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        width: 100%;
+    }
+
+    .dropdown-menu li a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        line-height: 20px;
+        color: #777;
+    }
+}
+

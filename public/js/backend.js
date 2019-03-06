@@ -17015,5 +17015,6 @@ __webpack_require__(0);
 
 // removed by extract-text-webpack-plugin
 
-        /***/ })
+        /***/
+    })
 /******/ ]);

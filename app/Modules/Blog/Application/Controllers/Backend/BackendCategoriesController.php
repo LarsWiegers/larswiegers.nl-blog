@@ -100,7 +100,8 @@ class BackendCategoriesController extends Controller
 	public function edit(int $categoryId)
 	{
 		return view( $this->viewPath . 'create-edit',[
-			'type' => 'create',
+            'type' => 'edit',
+            'model' => Category::class,
 			'category' => Category::findOrFail($categoryId)
 		]);
 
