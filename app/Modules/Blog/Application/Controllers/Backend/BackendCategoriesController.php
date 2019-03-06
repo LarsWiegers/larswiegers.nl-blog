@@ -20,9 +20,10 @@ class BackendCategoriesController extends Controller
 	 */
 	private function validator($request) {
 		return Validator::make($request->all(), [
-			'title' => 'required|unique:categories|max:255',
+			'title' => 'required|max:255',
 			'description' => 'required',
 			'slug' => 'nullable',
+            'public' => 'integer'
 		]);
 	}
 
@@ -49,6 +50,7 @@ class BackendCategoriesController extends Controller
 	{
 		return view( $this->viewPath . 'create-edit',[
 			'type' => 'create',
+			'model' => Category::class,
 			'category' => new Category()
 		]);
 	}
@@ -69,11 +71,7 @@ class BackendCategoriesController extends Controller
 				->withInput();
 		}
 
-		Category::create([
-			'title' => $request->get('title'),
-			'description' => $request->get('description'),
-			'slug' => $request->get('slug')
-		]);
+		Category::create($request->all());
 
 		return redirect(route('backend.categories.index'));
 	}
@@ -123,7 +121,6 @@ class BackendCategoriesController extends Controller
 			                 ->withErrors($validator)
 			                 ->withInput();
 		}
-
 		$category->fill($request->all());
 		$category->save();
 

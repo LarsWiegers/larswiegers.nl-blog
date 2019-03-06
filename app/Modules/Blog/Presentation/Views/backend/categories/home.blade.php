@@ -42,7 +42,7 @@
                                                 {{$category->description}}
                                             </td>
                                             <td>
-                                                {{($category->title === 1 ? 'yes' : 'no')}}
+                                                {{($category->public === 1 ? 'yes' : 'no')}}
                                             </td>
                                             <td>
                                                 {{$category->created_at}}

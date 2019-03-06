@@ -29,9 +29,21 @@
                    'label' => 'slug',
                    'required' => 'required'
                ], $errors) }}
+    {{ Form::radioGroup([
+                   'name' => 'public',
+                   'options' => ["no", "yes"],
+                   'value' => old('public')  === null ? $category->public : old('public'),
+                   'label' => 'The post is public',
+                   'required' => 'required'
+    ], $errors) }}
     <div class="row">
         <div class="col-md-2 col-md-offset-2">
-            {!! Form::submit('update', [ 'class' => 'form-control']) !!}
+            @if($type === "create")
+                {!! Form::submit('create', [ 'class' => 'form-control']) !!}
+            @else
+                {!! Form::submit('edit', [ 'class' => 'form-control']) !!}
+            @endif
+
         </div>
     </div>
     {!! Form::close() !!}
