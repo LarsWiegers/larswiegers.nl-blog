@@ -36,12 +36,32 @@
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 /******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -59,12 +79,106 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "/";
 /******/
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ "./app/Modules/Backend/Presentation/Assets/app.scss":
+/*!**********************************************************!*\
+  !*** ./app/Modules/Backend/Presentation/Assets/app.scss ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./app/Modules/Backend/Presentation/Assets/js/app.js":
+/*!***********************************************************!*\
+  !*** ./app/Modules/Backend/Presentation/Assets/js/app.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
+
+/***/ }),
+
+/***/ "./app/Modules/Blog/Presentation/Assets/app.scss":
+/*!*******************************************************!*\
+  !*** ./app/Modules/Blog/Presentation/Assets/app.scss ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./app/Modules/Blog/Presentation/Assets/backend/app.scss":
+/*!***************************************************************!*\
+  !*** ./app/Modules/Blog/Presentation/Assets/backend/app.scss ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./app/Modules/Contact/Presentation/Assets/app.scss":
+/*!**********************************************************!*\
+  !*** ./app/Modules/Contact/Presentation/Assets/app.scss ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./app/Modules/Projects/Presentation/Assets/app.scss":
+/*!***********************************************************!*\
+  !*** ./app/Modules/Projects/Presentation/Assets/app.scss ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./app/Modules/SocialMedia/Presentation/Assets/backend/app.scss":
+/*!**********************************************************************!*\
+  !*** ./app/Modules/SocialMedia/Presentation/Assets/backend/app.scss ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./app/Modules/Visitors/Presentation/Assets/app.scss":
+/*!***********************************************************!*\
+  !*** ./app/Modules/Visitors/Presentation/Assets/app.scss ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/bootstrap/dist/js/bootstrap.js ***!
+  \*****************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -73,9 +187,8 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
-   true ? factory(exports, __webpack_require__(1), __webpack_require__(2)) :
-  typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'popper.js'], factory) :
-  (factory((global.bootstrap = {}),global.jQuery,global.Popper));
+   true ? factory(exports, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"), __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")) :
+  undefined;
 }(this, (function (exports,$,Popper) { 'use strict';
 
   $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
@@ -4014,7 +4127,12 @@
 
 
 /***/ }),
-/* 1 */
+
+/***/ "./node_modules/jquery/dist/jquery.js":
+/*!********************************************!*\
+  !*** ./node_modules/jquery/dist/jquery.js ***!
+  \********************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -4034,7 +4152,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 	"use strict";
 
-	if ( typeof module === "object" && typeof module.exports === "object" ) {
+	if (  true && typeof module.exports === "object" ) {
 
 		// For CommonJS and CommonJS-like environments where a proper `window`
 		// is present, execute the factory and get jQuery.
@@ -14385,11 +14503,16 @@ return jQuery;
 
 
 /***/ }),
-/* 2 */
+
+/***/ "./node_modules/popper.js/dist/esm/popper.js":
+/*!***************************************************!*\
+  !*** ./node_modules/popper.js/dist/esm/popper.js ***!
+  \***************************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+__webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(global) {/**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
  * @version 1.14.4
@@ -16923,10 +17046,15 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
-/* 3 */
+
+/***/ "./node_modules/webpack/buildin/global.js":
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
 var g;
@@ -16938,11 +17066,10 @@ g = (function() {
 
 try {
 	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
+	g = g || new Function("return this")();
+} catch (e) {
 	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
+	if (typeof window === "object") g = window;
 }
 
 // g can still be undefined, but nothing to do about it...
@@ -16953,68 +17080,24 @@ module.exports = g;
 
 
 /***/ }),
-/* 4 */
+
+/***/ 0:
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./app/Modules/Backend/Presentation/Assets/js/app.js ./app/Modules/Contact/Presentation/Assets/app.scss ./app/Modules/Projects/Presentation/Assets/app.scss ./app/Modules/Backend/Presentation/Assets/app.scss ./app/Modules/Visitors/Presentation/Assets/app.scss ./app/Modules/SocialMedia/Presentation/Assets/backend/app.scss ./app/Modules/Blog/Presentation/Assets/app.scss ./app/Modules/Blog/Presentation/Assets/backend/app.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(5);
-__webpack_require__(6);
-__webpack_require__(7);
-__webpack_require__(8);
-__webpack_require__(9);
-__webpack_require__(10);
-        __webpack_require__(11);
-        module.exports = __webpack_require__(12);
+__webpack_require__(/*! D:\Code\larswiegers.nl-blog\app\Modules\Backend\Presentation\Assets\js\app.js */"./app/Modules/Backend/Presentation/Assets/js/app.js");
+__webpack_require__(/*! D:\Code\larswiegers.nl-blog\app\Modules\Contact\Presentation\Assets\app.scss */"./app/Modules/Contact/Presentation/Assets/app.scss");
+__webpack_require__(/*! D:\Code\larswiegers.nl-blog\app\Modules\Projects\Presentation\Assets\app.scss */"./app/Modules/Projects/Presentation/Assets/app.scss");
+__webpack_require__(/*! D:\Code\larswiegers.nl-blog\app\Modules\Backend\Presentation\Assets\app.scss */"./app/Modules/Backend/Presentation/Assets/app.scss");
+__webpack_require__(/*! D:\Code\larswiegers.nl-blog\app\Modules\Visitors\Presentation\Assets\app.scss */"./app/Modules/Visitors/Presentation/Assets/app.scss");
+__webpack_require__(/*! D:\Code\larswiegers.nl-blog\app\Modules\SocialMedia\Presentation\Assets\backend\app.scss */"./app/Modules/SocialMedia/Presentation/Assets/backend/app.scss");
+__webpack_require__(/*! D:\Code\larswiegers.nl-blog\app\Modules\Blog\Presentation\Assets\app.scss */"./app/Modules/Blog/Presentation/Assets/app.scss");
+module.exports = __webpack_require__(/*! D:\Code\larswiegers.nl-blog\app\Modules\Blog\Presentation\Assets\backend\app.scss */"./app/Modules/Blog/Presentation/Assets/backend/app.scss");
 
 
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ })
 
-__webpack_require__(0);
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-        /***/
-    }),
-    /* 12 */
-    /***/ (function (module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-        /***/
-    })
-/******/ ]);
+/******/ });

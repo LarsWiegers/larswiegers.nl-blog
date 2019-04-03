@@ -9,7 +9,7 @@ class SocialMediaAccount extends Model
     //
 	protected $primaryKey = 'id';
 
-	protected $fillable = ['url', 'name', 'user_id'];
+	protected $fillable = ['url', 'name', 'user_id', 'type_id'];
 
 	public $timestamps = false;
 

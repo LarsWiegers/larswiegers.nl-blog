@@ -5,8 +5,10 @@ namespace App\Modules\User\Application\Controllers;
 use App\Http\Controllers\Controller;
 use App\Modules\SocialMedia\Domain\Helpers\HttpResponseCodeHelper;
 use App\Modules\SocialMedia\Domain\SocialMediaAccount;
+use App\Modules\SocialMedia\Domain\SocialMediaType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class ProfileController extends Controller
@@ -56,22 +58,37 @@ class ProfileController extends Controller
 		if(sizeof($errors)) {
 			return Redirect::back()->withInput()->withErrors($errors);
 		}
+		$twitter = SocialMediaType::where('name', '=', 'Twitter')->get()->first();
+		$instagram = SocialMediaType::where('name', '=', 'Instagram')->get()->first();
+		$youtube = SocialMediaType::where('name', '=', 'Youtube')->get()->first();
 		if( $request->get('twitterUrl') != null) {
 			SocialMediaAccount::updateOrCreate(
-				['name' => 'Twitter', 'user_id' => Auth::id()],
-				['url' => $request->get('twitterUrl')]);
+				['type_id' => $twitter->id, 'user_id' => Auth::id()],
+				[
+					'url' => $request->get('twitterUrl'),
+					'type_id' => $twitter->id,
+					'user_id' => Auth::id()
+				]);
 		}
 
 		if( $request->get('instagramUrl') != null) {
 			SocialMediaAccount::updateOrCreate(
-				['name' => 'Instagram', 'user_id' => Auth::id()],
-				['url' => $request->get('instagramUrl')]);
+				['type_id' => $instagram->id, 'user_id' => Auth::id()],
+				[
+					'url' => $request->get('instagramUrl'),
+					'type_id' => $twitter->id,
+					'user_id' => Auth::id()
+				]);
 		}
 
 		if( $request->get('youtubeUrl') != null) {
 			SocialMediaAccount::updateOrCreate(
-				['name' => 'Youtube', 'user_id' => Auth::id()],
-				['url' => $request->get('youtubeUrl')]);
+				['type_id' => $youtube->id, 'user_id' => Auth::id()],
+				[
+					'url' => $request->get('youtubeUrl'),
+					'type_id' => $twitter->id,
+					'user_id' => Auth::id()
+				]);
 		}
 
 
