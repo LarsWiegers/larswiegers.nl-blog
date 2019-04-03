@@ -45,11 +45,11 @@ h2 {
   }
   i {
     font-size: 2em;
+    color: white;
   }
   a {
     display: block;
     padding: 15px 15px;
-    border-left: 1px solid #ddd;
   }
 }
 .required:not(.form-group) {
@@ -154,3 +154,120 @@ img {
     }
 }
 
+
+@import './navbar';
+.navbar {
+  background: #65a0ef;
+  color: white;
+  margin-bottom: 0;
+  a.navbar-brand,
+  > li a,
+  > li a:hover,
+  li a:hover,
+  > li a:active,
+  .navbar-nav .navbar-brand:hover,
+  > li a:focus {
+    color: white !important;
+  }
+  .navbar-toggle {
+    border-color: #fff;
+  }
+}
+.navbar-nav > li a {
+  color: white;
+  &:hover, &:active, &:focus {
+    background-color: unset;
+  }
+}
+.navbar .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+@media screen and (min-width: 800px) {
+  .navbar {
+    min-height: 100vh;
+    width: 20vw;
+    .navbar-brand {
+      padding-left: 30px;
+    }
+    .container {
+      max-width: 100%;
+    }
+    &-brand {
+      width: 100%;
+    }
+    &-header {
+      float: none;
+    }
+    .nav {
+      display: flex;
+      flex-direction: column;
+      li > a {
+        background: transparent;
+      }
+    }
+    .dropdown-menu {
+      position: relative;
+      top: unset;
+      left: unset;
+      right: unset;
+      background-color: unset;
+      box-shadow: unset;
+      border: unset;
+      a {
+        padding: 15px 15px 15px 30px;
+      }
+    }
+
+    &-collapse {
+      float: none;
+    }
+  }
+  #app-navbar-collapse {
+    display: flex !important;
+    flex-direction: column;
+    .navbar-nav {
+      flex: 1 0 100%;
+    }
+    .navbar-right {
+      margin-right: 0;
+    }
+  }
+  .content-container {
+    min-width: 80vw;
+    background: linear-gradient(#1e1e2f,#1e1e24);
+    .container {
+      width: calc(80vw - 30px);
+    }
+  }
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 800px) {
+    flex-direction: row;
+  }
+}
+.panel {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  .panel-heading {
+    background-color: unset;
+    border: unset;
+    color: white;
+    .sub-title {
+      margin: 0;
+      color: #9a9a9a;
+      font-size: 1.25rem;
+      line-height: 1.4em;
+    }
+    .main-title {
+      margin: 0;
+    }
+  }
+  border: unset;
+  box-shadow: unset;
+  background: #27293d;
+}
+table, thead, tbody, td, th, td > a{
+  color: white;
+}

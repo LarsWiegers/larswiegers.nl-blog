@@ -11367,12 +11367,12 @@ h2 {
 
 .panel-heading-crud i {
   font-size: 2em;
+  color: white;
 }
 
 .panel-heading-crud a {
   display: block;
   padding: 15px 15px;
-  border-left: 1px solid #ddd;
 }
 
 .required:not(.form-group) {
@@ -11468,5 +11468,161 @@ img {
     line-height: 20px;
     color: #777;
   }
+}
+
+.navbar {
+  background: #65a0ef;
+  color: white;
+}
+
+.navbar {
+  background: #65a0ef;
+  color: white;
+  margin-bottom: 0;
+}
+
+.navbar a.navbar-brand,
+.navbar > li a,
+.navbar > li a:hover,
+.navbar li a:hover,
+.navbar > li a:active,
+.navbar .navbar-nav .navbar-brand:hover,
+.navbar > li a:focus {
+  color: white !important;
+}
+
+.navbar .navbar-toggle {
+  border-color: #fff;
+}
+
+.navbar-nav > li a {
+  color: white;
+}
+
+.navbar-nav > li a:hover,
+.navbar-nav > li a:active,
+.navbar-nav > li a:focus {
+  background-color: unset;
+}
+
+.navbar .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+
+@media screen and (min-width: 800px) {
+  .navbar {
+    min-height: 100vh;
+    width: 20vw;
+  }
+
+  .navbar .navbar-brand {
+    padding-left: 30px;
+  }
+
+  .navbar .container {
+    max-width: 100%;
+  }
+
+  .navbar-brand {
+    width: 100%;
+  }
+
+  .navbar-header {
+    float: none;
+  }
+
+  .navbar .nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navbar .nav li > a {
+    background: transparent;
+  }
+
+  .navbar .dropdown-menu {
+    position: relative;
+    top: unset;
+    left: unset;
+    right: unset;
+    background-color: unset;
+    box-shadow: unset;
+    border: unset;
+  }
+
+  .navbar .dropdown-menu a {
+    padding: 15px 15px 15px 30px;
+  }
+
+  .navbar-collapse {
+    float: none;
+  }
+
+  #app-navbar-collapse {
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  #app-navbar-collapse .navbar-nav {
+    flex: 1 0 100%;
+  }
+
+  #app-navbar-collapse .navbar-right {
+    margin-right: 0;
+  }
+
+  .content-container {
+    min-width: 80vw;
+    background: linear-gradient(#1e1e2f, #1e1e24);
+  }
+
+  .content-container .container {
+    width: calc(80vw - 30px);
+  }
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 800px) {
+  #app {
+    flex-direction: row;
+  }
+}
+
+.panel {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: unset;
+  box-shadow: unset;
+  background: #27293d;
+}
+
+.panel .panel-heading {
+  background-color: unset;
+  border: unset;
+  color: white;
+}
+
+.panel .panel-heading .sub-title {
+  margin: 0;
+  color: #9a9a9a;
+  font-size: 1.25rem;
+  line-height: 1.4em;
+}
+
+.panel .panel-heading .main-title {
+  margin: 0;
+}
+
+table,
+thead,
+tbody,
+td,
+th,
+td > a {
+  color: white;
 }
 
