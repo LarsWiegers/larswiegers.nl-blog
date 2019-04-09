@@ -11622,7 +11622,74 @@ thead,
 tbody,
 td,
 th,
-td > a {
+td > a,
+label,
+h1,
+h2,
+h3,
+h4,
+h5 {
   color: white;
+}
+
+input[type=submit],
+.btn {
+  background-color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 8px 15px;
+}
+
+a {
+  color: #0f0f0f;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+.visitor-boxes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visitor-box {
+  flex: 0 0 30%;
+  padding: 5px 13px;
+  position: relative;
+  transition: -webkit-transform 350ms ease-in-out;
+  transition: transform 350ms ease-in-out;
+  transition: transform 350ms ease-in-out, -webkit-transform 350ms ease-in-out;
+  color: white;
+}
+
+.visitor-box .stats {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 2em;
+}
+
+.visitor-box:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  z-index: 2;
+}
+
+.visitor-daily {
+  background-color: #00b4b4;
+}
+
+.visitor-monthly {
+  background-color: #b400b4;
+}
+
+.visitor-yearly {
+  background-color: #b4b400;
 }
 

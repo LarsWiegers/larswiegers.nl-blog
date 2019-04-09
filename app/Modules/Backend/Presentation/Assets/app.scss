@@ -268,6 +268,58 @@ img {
   box-shadow: unset;
   background: #27293d;
 }
-table, thead, tbody, td, th, td > a{
+table, thead, tbody, td, th, td > a, label, h1, h2, h3, h4, h5{
   color: white;
+}
+
+input[type=submit], .btn {
+  background-color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 8px 15px;
+}
+a {
+  color: #0f0f0f;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+h2 {
+  font-size: 1.5em;
+}
+.visitor-boxes {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.visitor-box {
+  flex: 0 0 30%;
+  padding: 5px 13px;
+  position:relative;
+  transition: transform 350ms ease-in-out;
+
+  color:white;
+  .stats {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 2em;
+  }
+  &:hover {
+    transform: scale(1.05);
+    z-index:2;
+  }
+}
+
+.visitor {
+  &-daily {
+    background-color: rgba(0,180,180,1);
+  }
+  &-monthly {
+    background-color: rgba(180,0,180,1);
+  }
+  &-yearly {
+    background-color: rgba(180,180,0,1);
+  }
 }
