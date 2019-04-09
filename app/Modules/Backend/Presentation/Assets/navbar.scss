@@ -1,5 +1,103 @@
 .navbar {
   background: #65a0ef;
   color: white;
+  border-radius: 5px;
 }
+.navbar {
+  background: #65a0ef;
+  color: white;
+  margin-bottom: 0;
+  a.navbar-brand,
+  > li a,
+  > li a:hover,
+  li a:hover,
+  > li a:active,
+  .navbar-nav .navbar-brand:hover,
+  > li a:focus {
+    color: white !important;
+  }
+  .navbar-toggle {
+    border-color: #fff;
+  }
+  li {
+    padding: 10px 10px;
+    list-style: none;
+    li {
+      padding: 10px 10px;
+    }
 
+  }
+}
+.navbar-nav > li a {
+  color: white;
+  &:hover, &:active, &:focus {
+    background-color: unset;
+  }
+}
+.navbar .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+@media screen and (min-width: 800px) {
+  .navbar {
+    min-height: 100vh;
+    min-width: 20vw;
+    .navbar-brand {
+      padding-left: 30px;
+    }
+    .container {
+      max-width: 100%;
+    }
+    &-brand {
+      width: 100%;
+    }
+    &-header {
+      float: none;
+    }
+    .nav {
+      display: flex;
+      flex-direction: column;
+      li > a {
+        background: transparent;
+      }
+    }
+    .dropdown-menu {
+      position: relative;
+      top: unset;
+      left: unset;
+      right: unset;
+      background-color: unset;
+      box-shadow: unset;
+      border: unset;
+      a {
+        padding: 15px;
+      }
+    }
+
+    &-collapse {
+      float: none;
+    }
+  }
+  #app-navbar-collapse {
+    display: flex !important;
+    flex-direction: column;
+    .navbar-nav {
+      flex: 1 0 100%;
+    }
+    .navbar-right {
+      margin-right: 0;
+    }
+  }
+  .content-container {
+    min-width: 80vw;
+    background: linear-gradient(#1e1e2f,#1e1e24);
+    .container {
+      width: calc(80vw - 30px);
+    }
+  }
+  .navbar-header {
+    padding: 20px;
+    .navbar-toggle {
+      opacity: 0;
+    }
+  }
+}

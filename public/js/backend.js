@@ -106,6 +106,12 @@
 
 __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 
+if (document.querySelector('.dropdown-trigger')) {
+  document.querySelector('.dropdown-trigger').addEventListener('click', function () {
+    this.parentElement.querySelector('.dropdown').classList.toggle('opened');
+  });
+}
+
 /***/ }),
 
 /***/ "./app/Modules/Blog/Presentation/Assets/app.scss":
