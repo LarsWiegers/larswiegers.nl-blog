@@ -1,9 +1,9 @@
 <template>
-  <div class="search-wrapper" v-show="ifKeyComboPressed">
+  <div id="search" class="search-wrapper" v-show="ifKeyComboPressed">
     <div class="background"></div>
     <div class="foreground">
       <div class="modal">
-        <input ref="search" id="search" type="text" v-model="search" autofocus>
+        <input ref="search" type="text" v-model="search" autofocus>
         <ul class="result-container">
           <li class="result" v-for="(item,index) in foundRoutes" v-if="index <= 5">
             <div class="route" v-if="item.type === 'route'">
@@ -53,6 +53,10 @@
   .result {
     color: black;
     background-color: white;
+    a {
+      width: 100%;
+      display: block;
+    }
   }
   .modal {
     position: relative;
@@ -73,6 +77,11 @@
         foundRoutes: []
       }
     },
+    methods: {
+      show() {
+        this.ifKeyComboPressed = true;
+      }
+    },
     mounted() {
       let self = this;
       document.addEventListener("keydown", function (event) {
@@ -89,9 +98,6 @@
         }else if(event.key !== "Tab") {
           self.$refs.search.focus();
         }
-        console.log(document.activeElement);
-
-
       })
     },
     watch: {

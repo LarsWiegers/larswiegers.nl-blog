@@ -221,6 +221,15 @@ Vue.component('search', __webpack_require__(/*! ./Search.vue */ "./app/Modules/B
 var app = new Vue({
   el: '#app'
 });
+document.addEventListener("DOMContentLoaded", function (event) {
+  if (document.querySelector('a[data-target="#search"]')) {
+    document.querySelector('a[data-target="#search"]').addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      app.$refs.search.show();
+    });
+  }
+});
 
 /***/ }),
 
@@ -364,6 +373,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -372,6 +385,11 @@ __webpack_require__.r(__webpack_exports__);
       ifKeyComboPressed: false,
       foundRoutes: []
     };
+  },
+  methods: {
+    show: function show() {
+      this.ifKeyComboPressed = true;
+    }
   },
   mounted: function mounted() {
     var self = this;
@@ -388,8 +406,6 @@ __webpack_require__.r(__webpack_exports__);
       } else if (event.key !== "Tab") {
         self.$refs.search.focus();
       }
-
-      console.log(document.activeElement);
     });
   },
   watch: {
@@ -4386,7 +4402,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".search-wrapper, .background, .foreground {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n}\n.search-wrapper .background, .background .background, .foreground .background {\n  background-color: rgba(0, 0, 0, 0.9);\n  height: 100%;\n  z-index: 2;\n}\n.search-wrapper .foreground, .background .foreground, .foreground .foreground {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n  z-index: 3;\n}\n.search-wrapper .foreground input, .background .foreground input, .foreground .foreground input {\n  background-color: transparent;\n  border: none;\n  border-bottom: 2px solid #65a0ef;\n  min-width: 45vw;\n  min-height: 2vw;\n  color: white;\n  width: 100%;\n}\n.search-wrapper .foreground .fa, .background .foreground .fa, .foreground .foreground .fa {\n  color: white;\n  position: relative;\n  left: -25px;\n}\n.result {\n  color: black;\n  background-color: white;\n}\n.modal {\n  position: relative;\n}\n.result-container {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n}", ""]);
+exports.push([module.i, ".search-wrapper, .background, .foreground {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n}\n.search-wrapper .background, .background .background, .foreground .background {\n  background-color: rgba(0, 0, 0, 0.9);\n  height: 100%;\n  z-index: 2;\n}\n.search-wrapper .foreground, .background .foreground, .foreground .foreground {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n  z-index: 3;\n}\n.search-wrapper .foreground input, .background .foreground input, .foreground .foreground input {\n  background-color: transparent;\n  border: none;\n  border-bottom: 2px solid #65a0ef;\n  min-width: 45vw;\n  min-height: 2vw;\n  color: white;\n  width: 100%;\n}\n.search-wrapper .foreground .fa, .background .foreground .fa, .foreground .foreground .fa {\n  color: white;\n  position: relative;\n  left: -25px;\n}\n.result {\n  color: black;\n  background-color: white;\n}\n.result a {\n  width: 100%;\n  display: block;\n}\n.modal {\n  position: relative;\n}\n.result-container {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n}", ""]);
 
 // exports
 
@@ -18435,7 +18451,8 @@ var render = function() {
           expression: "ifKeyComboPressed"
         }
       ],
-      staticClass: "search-wrapper"
+      staticClass: "search-wrapper",
+      attrs: { id: "search" }
     },
     [
       _c("div", { staticClass: "background" }),
@@ -18452,7 +18469,7 @@ var render = function() {
               }
             ],
             ref: "search",
-            attrs: { id: "search", type: "text", autofocus: "" },
+            attrs: { type: "text", autofocus: "" },
             domProps: { value: _vm.search },
             on: {
               input: function($event) {

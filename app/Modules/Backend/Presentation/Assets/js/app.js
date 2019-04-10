@@ -31,3 +31,12 @@ Vue.component('search', require('./Search.vue').default);
 const app = new Vue({
   el: '#app'
 });
+document.addEventListener("DOMContentLoaded", function(event) {
+  if(document.querySelector('a[data-target="#search"]')) {
+    document.querySelector('a[data-target="#search"]').addEventListener('click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      app.$refs.search.show();
+    });
+  }
+});

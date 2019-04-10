@@ -15,7 +15,9 @@ class SearchController extends Controller {
 	public function search($searchCriteria) {
 		$routes = collect(Route::getRoutes())
 		->map(function ($route) {
-			return $route->uri();
+			if(in_array("GET", $route->methods)) {
+				return $route->uri();
+			}
 		});
 		$foundRoutes = new Collection();
 		foreach($routes as $route) {

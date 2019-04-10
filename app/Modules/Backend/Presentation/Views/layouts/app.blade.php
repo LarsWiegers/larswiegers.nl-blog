@@ -22,7 +22,7 @@
         </div>
         <div class="right">
             <nav class="nav">
-                <a href="#">
+                <a href="#" data-target="#search">
                     <svg xmlns="http://www.w3.org/2000/svg" stroke="white" fill="white" stroke-width="0.5"
                          fill-opacity="0.4" stroke-opacity="0.4"
                          width="24" height="24" viewBox="0 0 24 24">
@@ -131,7 +131,7 @@
         <div class="content-container">
             @yield('content')
         </div>
-        <search></search> <!-- vuejs component -->
+        <search ref="search"></search> <!-- vuejs component -->
     </main>
 </div>
 
