@@ -7,4 +7,5 @@ Route::group(['namespace' => '\App\Modules\Backend\Application\Controllers',
 		return redirect(route('login'));
 	});
 	Route::get('dashboard', 'HomeController@index')->name('backend-home');
+	Route::get('search/{searchCriteria}', 'SearchController@search')->name('backend-search');
 });

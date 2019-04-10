@@ -131,6 +131,7 @@
         <div class="content-container">
             @yield('content')
         </div>
+        <search></search> <!-- vuejs component -->
     </main>
 </div>
 
