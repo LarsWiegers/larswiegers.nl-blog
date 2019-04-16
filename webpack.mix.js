@@ -18,10 +18,11 @@ mix.browserSync('localhost:8000')
 
 	.copy('app/Modules/User/Presentation/Assets/images', 'public/images')
 
-    .sass('app/Modules/Projects/Presentation/Assets/app.scss', 'public/css/projects.css')
+	.sass('app/Modules/Projects/Presentation/Assets/app.scss', 'public/css/projects.css')
 
 	.sass('app/Modules/Backend/Presentation/Assets/app.scss', 'public/css/backend.css')
 	.js('app/Modules/Backend/Presentation/Assets/js/app.js', 'public/js/backend.js')
+	.js('app/Modules/People/Presentation/Assets/js/people.js', 'public/js/people.js')
 
 	.sass('app/Modules/Visitors/Presentation/Assets/app.scss', 'public/css/backend-visitors.css')
 	.js('app/Modules/Visitors/Presentation/Assets/js/app.js', 'public/js/backend-visitors.js')

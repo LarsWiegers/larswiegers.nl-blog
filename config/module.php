@@ -11,6 +11,7 @@ return  [
 		'Backend',
 		'User',
 		'SocialMedia',
-		'Visitors'
+		'Visitors',
+		'People'
 	]
 ];

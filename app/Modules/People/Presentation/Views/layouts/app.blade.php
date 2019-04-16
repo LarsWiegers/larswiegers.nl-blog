@@ -117,9 +117,6 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="{{route('backend.people.home')}}">People</a>
-                        </li>
-                        <li>
                             <a href="{{route('backend.visitors.home')}}">Visitors</a>
                         </li>
                         <li>
@@ -134,9 +131,7 @@
         <div class="content-container">
             @yield('content')
         </div>
-        <div id="search-container">
-            <search ref="search"></search> <!-- vuejs component -->
-        </div>
+        <search ref="search"></search> <!-- vuejs component -->
     </main>
 </div>
 

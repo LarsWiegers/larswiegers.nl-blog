@@ -219,7 +219,7 @@ Vue.component('search', __webpack_require__(/*! ./Search.vue */ "./app/Modules/B
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#search-container'
 });
 document.addEventListener("DOMContentLoaded", function (event) {
   if (document.querySelector('a[data-target="#search"]')) {

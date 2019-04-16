@@ -1,11 +1,4 @@
 require('bootstrap');
-document.addEventListener("DOMContentLoaded", function(event) {
-  if(document.querySelector('a.dropdown-trigger')) {
-    document.querySelector('.dropdown-trigger').addEventListener('click', function() {
-      this.parentElement.querySelector('.dropdown').classList.toggle('opened');
-    })
-  }
-});
 
 window.Vue = require('vue');
 
@@ -20,7 +13,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('search', require('./Search.vue').default);
+Vue.component('graph', require('./Graph.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,14 +22,11 @@ Vue.component('search', require('./Search.vue').default);
  */
 
 const app = new Vue({
-  el: '#search-container'
-});
-document.addEventListener("DOMContentLoaded", function(event) {
-  if(document.querySelector('a[data-target="#search"]')) {
-    document.querySelector('a[data-target="#search"]').addEventListener('click', function(event) {
-      event.preventDefault();
-      event.stopPropagation();
-      app.$refs.search.show();
-    });
+  el: '#graph-container',
+  mounted () {
+    this.$on('onNodeClick', function(data) {
+      console.log(data);
+    })
   }
 });
+

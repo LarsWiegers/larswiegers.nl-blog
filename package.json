@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "bootstrap-sass": "^3.3.7",
+        "cytoscape": "^3.5.2",
         "font-awesome": "^4.7.0",
         "webpack": "^4.29.6"
     }
