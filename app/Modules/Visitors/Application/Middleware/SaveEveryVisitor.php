@@ -2,7 +2,7 @@
 
 namespace App\Modules\Visitors\Application\Middleware;
 
-use App\Modules\Visitors\Domain\Visitor;
+use App\Modules\Visitors\Domain\IsHome;
 use Closure;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
@@ -22,13 +22,13 @@ class SaveEveryVisitor
     {
         try {
             if (Auth::user()) {
-                Visitor::create([
+                IsHome::create([
                     'ip' => $request->ip(),
                     'url' => $request->fullUrl(),
                     'user_id' => Auth::id()
                 ]);
             } else {
-                Visitor::create([
+                IsHome::create([
                     'ip' => $request->ip(),
                     'url' => $request->fullUrl()
                 ]);

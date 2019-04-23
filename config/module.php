@@ -12,6 +12,7 @@ return  [
 		'User',
 		'SocialMedia',
 		'Visitors',
-		'People'
+		'People',
+        'whoIsHome',
 	]
 ];
