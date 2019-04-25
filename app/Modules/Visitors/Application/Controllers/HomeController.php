@@ -4,19 +4,19 @@ namespace App\Modules\Visitors\Application\Controllers;
 
 use App\Charts\DefaultChart;
 use App\Http\Controllers\Controller;
-use App\Modules\Visitors\Domain\IsHome;
+use App\Modules\Visitors\Domain\Visitor;
 use Illuminate\Database\Eloquent\Collection;
 
 class HomeController extends Controller {
 
 	public function index() {
-		$allToday = IsHome::allToday();
-		$allMonth = IsHome::allMonth();
-		$allYear  = IsHome::allYear();
+		$allToday = Visitor::allToday();
+		$allMonth = Visitor::allMonth();
+		$allYear  = Visitor::allYear();
 
-		$previousToday = IsHome::allYesterday();
-		$previousMonth = IsHome::allPreviousMonth();
-		$previousYear = IsHome::allPreviousYear();
+		$previousToday = Visitor::allYesterday();
+		$previousMonth = Visitor::allPreviousMonth();
+		$previousYear = Visitor::allPreviousYear();
 
 		$chart = new DefaultChart();
 		$colors = [
@@ -33,12 +33,12 @@ class HomeController extends Controller {
 			'Feb' => '#fe8a71',
 			'Jan' => '#4b86b4',
 		];
-		$labels = new Collection(IsHome::perMonthOfTheLast12Months()->keys());
+		$labels = new Collection(Visitor::perMonthOfTheLast12Months()->keys());
 		$chart->labels($labels->toArray());
 
 		$collection = new Collection();
 
-		forEach(IsHome::perMonthOfTheLast12Months() as $monthNumberOfVisitors) {
+		forEach(Visitor::perMonthOfTheLast12Months() as $monthNumberOfVisitors) {
 			$collection->add(count($monthNumberOfVisitors));
 
 		}
@@ -56,7 +56,7 @@ class HomeController extends Controller {
 
 		$collection = new Collection();
 
-		forEach(IsHome::perMonthOfLastYear() as $monthNumberOfVisitors) {
+		forEach(Visitor::perMonthOfLastYear() as $monthNumberOfVisitors) {
 			$collection->add(count($monthNumberOfVisitors));
 
 		}

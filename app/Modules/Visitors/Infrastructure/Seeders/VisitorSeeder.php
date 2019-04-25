@@ -11,6 +11,6 @@ class VisitorSeeder extends Seeder
      */
     public function run()
     {
-	    factory(\App\Modules\Visitors\Domain\IsHome::class, 50)->create();
+	    factory(\App\Modules\Visitors\Domain\Visitor::class, 50)->create();
     }
 }
