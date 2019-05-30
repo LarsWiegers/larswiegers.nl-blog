@@ -28,7 +28,9 @@
     "dependencies": {
         "bootstrap-sass": "^3.3.7",
         "cytoscape": "^3.5.2",
+        "cytoscape-edgehandles": "^3.5.1",
         "font-awesome": "^4.7.0",
+        "vuejs-datepicker": "^1.5.4",
         "webpack": "^4.29.6"
     }
 }

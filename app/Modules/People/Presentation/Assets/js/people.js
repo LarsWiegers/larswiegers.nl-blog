@@ -12,9 +12,8 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
-
-Vue.component('graph', require('./Graph.vue').default);
-
+import AddModal from './AddModal';
+import Graph from './Graph';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -23,10 +22,23 @@ Vue.component('graph', require('./Graph.vue').default);
 
 const app = new Vue({
   el: '#graph-container',
-  mounted () {
-    this.$on('onNodeClick', function(data) {
+  components: {
+    'add-model': AddModal,
+    'graph': Graph,
+  },
+  methods: {
+    showAddModal(data) {
+      if(data) {
+        this.$refs.addModel.show(data.data);
+      }else {
+        this.$refs.addModel.show();
+      }
+
+    },
+    save(data) {
       console.log(data);
-    })
+      this.$refs.graph.addPerson(data);
+    }
   }
 });
 
