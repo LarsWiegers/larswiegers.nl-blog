@@ -12,6 +12,9 @@
                                 {!! Form::open(['route' => ['profile-save', Auth::id()],
                                     'method' => 'put',
                                     'onsubmit' => 'return fileSmallEnough(); return false;']) !!}
+                                <h2>Profile image: </h2>
+                                <input type="file" name="profile_image" accept="image/*">
+                                {{dump($errors)}}
                                 <h2> Social media accounts :</h2>
                                 {{ Form::textGroup([
                                             'name' => 'twitterUrl',

@@ -8,7 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-        <link rel="manifest" href="./manifest.json">
+        <link rel="manifest" href="{{asset('manifest.json')}}">
         <!-- Styles -->
         <style>
             html, body {

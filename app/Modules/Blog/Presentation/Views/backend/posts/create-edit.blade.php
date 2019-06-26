@@ -5,7 +5,11 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h1>Create a post</h1>
+                        @if($type === "create")
+                            <h1>Create a post</h1>
+                        @else
+                            <h1>Edit a post</h1>
+                        @endif
                     </div>
                     <div class="panel-body">
                         <div class="container-fluid">
@@ -27,7 +31,7 @@
                                                'value' => old('content')  === null ? $post->content : old('content'),
                                                'label' => 'The content',
                                                'required' => 'required',
-                                               'cols' => 10,
+                                               'cols' => 45,
                                                'rows' => 10
                                            ], $errors) }}
                                 {{ Form::textGroup([
@@ -67,11 +71,24 @@
                                               'options' => $categories
                                           ], $errors) }}
                                 @endif
+test
+                                {{ Form::radioGroup([
+                                           'name' => 'public',
+                                           'value' => old('public')  === null ? $post->public : old('public'),
+                                           'label' => 'Is public',
+                                           'options' => ['false', 'true']
+                                       ], $errors) }}
 
                                 <div class="row">
                                     <div class="col-md-2 col-md-offset-2">
-                                        {!! Form::submit('create',
+                                        @if($type === "create")
+                                            {!! Form::submit('create',
                                         [ 'class' => 'form-control']) !!}
+                                        @else
+                                            {!! Form::submit('edit',
+                                        [ 'class' => 'form-control']) !!}
+                                        @endif
+
                                     </div>
                                 </div>
                                 {!! Form::close() !!}

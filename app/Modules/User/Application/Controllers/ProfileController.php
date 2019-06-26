@@ -37,7 +37,14 @@ class ProfileController extends Controller
 			'twitterUrl' => 'url|nullable',
 			'instagramUrl' => 'url|nullable',
 			'youtubeUrl' => 'url|nullable',
+			'profile_image' => 'image',
 		]);
+		
+		if($request->image('profile_image')) {
+			dd($request->image('profile_image'));
+			$path = $request->image('avatar')->store('profile_image');
+			dd($path);
+		}
 
 		$codeHelper = new HttpResponseCodeHelper();
 
