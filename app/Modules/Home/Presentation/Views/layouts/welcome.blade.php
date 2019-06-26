@@ -14,6 +14,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('css/home-main.css')}}" />
+        <link rel="stylesheet" href="{{asset('manifest.json')}}" />
     </head>
     <body>
         @yield("body")
