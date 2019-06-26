@@ -8,7 +8,7 @@
         <link rel="icon" type="image/png" href="{{asset('icons/favicon/favicon-16x16.png')}}" sizes="16x16" />
 
         <title>Lars Wiegers Blog</title>
-
+        <meta name="theme-color" content="#317EFB"/>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
 
