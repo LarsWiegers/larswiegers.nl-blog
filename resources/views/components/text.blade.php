@@ -1,8 +1,8 @@
 <div class="form-group row{{$errors->has($params['name']) ? 'has-error' : ''}}
- {{$params['required'] ? 'required' : ''}}">
+ {{$params['required'] ?? ''}}">
     <label  for="{{$params['name']}}"
             class="col-sm-2 control-label">{{$params[ 'label']}}
-        @if($params['required'])
+        @if($params['required'] ?? false)
             <span class="{{$params['required'] ? 'required' : ''}}">
                 {{$params['required']? '* required' : ''}}</span>
         @endif</label>
@@ -14,7 +14,7 @@
             class="form-control"
             value="{{$params['value']}}"
             placeholder="{{$params['label']}}"
-            {{$params['required'] ? 'required' : ''}}
+            {{$params['required'] ?? ''}}
         @if(isset($params['read-only']) ?? false)
             readonly
         @endif>
