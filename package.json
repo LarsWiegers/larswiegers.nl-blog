@@ -26,7 +26,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "bootstrap-sass": "^3.3.7",
+        "bootstrap-sass": "^3.4.1",
         "cytoscape": "^3.5.2",
         "cytoscape-edgehandles": "^3.5.1",
         "font-awesome": "^4.7.0",
