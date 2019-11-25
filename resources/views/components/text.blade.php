@@ -1,23 +1,23 @@
-<div class="form-group row{{$errors->has(array_get($params, 'name')) ? 'has-error' : ''}}
- {{array_get($params, 'required', false) ? 'required' : ''}}">
-    <label  for="{{array_get($params, 'name')}}"
-            class="col-sm-2 control-label">{{array_get($params, 'label')}}
-        @if(array_get($params, 'required', false))
-            <span class="{{array_get($params, 'required', false) ? 'required' : ''}}">
-                {{array_get($params, 'required', false) ? '* required' : ''}}</span>
+<div class="form-group row{{$errors->has($params['name']) ? 'has-error' : ''}}
+ {{$params['required'] ? 'required' : ''}}">
+    <label  for="{{$params['name']}}"
+            class="col-sm-2 control-label">{{$params[ 'label']}}
+        @if($params['required'])
+            <span class="{{$params['required'] ? 'required' : ''}}">
+                {{$params['required']? '* required' : ''}}</span>
         @endif</label>
     <div class="col-sm-10">
         <input
-            type="{{array_get($params, 'type', 'text')}}"
-            id="{{array_get($params, 'name')}}"
-            name="{{array_get($params, 'name')}}"
+            type="{{isset($params['type']) ?? 'text'}}"
+            id="{{$params['name']}}"
+            name="{{$params['name']}}"
             class="form-control"
-            value="{{array_get($params, 'value')}}"
-            placeholder="{{array_get($params, 'label')}}"
-            {{array_get($params, 'required', false) ? 'required' : ''}}
-        @if(array_get($params, 'read-only', false))
+            value="{{$params['value']}}"
+            placeholder="{{$params['label']}}"
+            {{$params['required'] ? 'required' : ''}}
+        @if(isset($params['read-only']) ?? false)
             readonly
         @endif>
-        <small class="text-danger">{{ $errors->first(array_get($params, 'name')) }}</small>
+        <small class="text-danger">{{ $errors->first($params['name']) }}</small>
     </div>
 </div>
