@@ -42,7 +42,7 @@
                                                'name' => 'public',
                                                'options' => ["no", "yes"],
                                                'value' => old('public')  === null ? $category->public : old('public'),
-                                               'label' => 'The post is public',
+                                               'label' => 'The category is public',
                                                'required' => 'required'
                                 ], $errors) }}
                                 <div class="row">

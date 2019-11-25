@@ -3592,3 +3592,15 @@ main {
   padding: 5px;
 }
 
+.form-group {
+  overflow: hidden;
+}
+
+.form-group input,
+.form-group textarea {
+  max-width: 100%;
+  min-width: 100%;
+  display: block;
+  padding: 16px;
+}
+

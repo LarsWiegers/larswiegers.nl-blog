@@ -362,3 +362,12 @@ main {
     padding: 5px;
   }
 }
+.form-group {
+    overflow: hidden;
+    input, textarea {
+        max-width: 100%;
+        min-width: 100%;
+        display: block;
+        padding: 16px;
+    }
+}

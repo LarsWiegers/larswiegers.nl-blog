@@ -22,7 +22,7 @@
                         <div class="posts social-box">
                             <h3>{{count($posts)}}</h3>
                             <p>Posts</p>
-                            <a href="{{route('backend.categories.index')}}">
+                            <a href="{{route('backend.posts.index')}}">
                                 <div class="url-beam">
                                     Ga naar Posts
                                     <i class="fa fa-arrow-circle-right"></i>

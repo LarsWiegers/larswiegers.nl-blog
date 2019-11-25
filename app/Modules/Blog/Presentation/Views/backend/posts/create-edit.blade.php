@@ -67,6 +67,13 @@
                                               'options' => $categories
                                           ], $errors) }}
                                 @endif
+                                {{ Form::radioGroup([
+                                           'name' => 'public',
+                                           'options' => ["no", "yes"],
+                                           'value' => old('public')  === null ? $post->public : old('public'),
+                                           'label' => 'The post is public',
+                                           'required' => 'required'
+                            ], $errors) }}
 
                                 <div class="row">
                                     <div class="col-md-2 col-md-offset-2">
