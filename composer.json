@@ -26,10 +26,7 @@
     },
     "autoload": {
         "classmap": [
-            "database/seeds",
-            "database/factories",
             "app/Modules/Blog/Infrastructure/Migrations",
-            "app/Modules/Blog/Infrastructure/Seeders",
             "app/Modules/Blog/Infrastructure/Factories"
         ],
         "psr-4": {

@@ -352,7 +352,7 @@ new topBar();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\larsw\Documents\Projects\larswiegers.nl\app\Modules\Blog\Presentation\Assets\js\app.js */"./app/Modules/Blog/Presentation/Assets/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Windows\Nextcloud\Documents\code\php\larswiegers.nl\app\Modules\Blog\Presentation\Assets\js\app.js */"./app/Modules/Blog/Presentation/Assets/js/app.js");
 
 
 /***/ })
