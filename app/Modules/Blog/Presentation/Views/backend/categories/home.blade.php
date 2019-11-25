@@ -63,7 +63,7 @@
                                             </td>
                                             <td>
                                                 <a href="{{route('backend.categories.destroy',
-                                                ['post' => $category->id])}}"
+                                                ['category' => $category->id])}}"
                                                    onclick="event.preventDefault();
                                                         document.getElementById('delete-category-{{$category->id}}').submit();">
                                                     <i class="fa fa-trash"></i>

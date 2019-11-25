@@ -37,12 +37,12 @@
                                             </td>
                                             <td>
                                                 <a href="{{route('backend.templates.edit',
-                                                ['category' => $template->id])}}">
+                                                ['template' => $template->id])}}">
                                                     <i class="fa fa-edit"></i></a>
                                             </td>
                                             <td>
                                                 <a href="{{route('backend.templates.destroy',
-                                                ['post' => $template->id])}}"   onclick="event.preventDefault();
+                                                ['template' => $template->id])}}"   onclick="event.preventDefault();
                                                      document.getElementById('destroy-template-{{$template->id}}').submit();">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
