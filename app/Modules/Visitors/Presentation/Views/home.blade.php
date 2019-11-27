@@ -73,6 +73,30 @@
                                 <a href="{{route('profile')}}">here</a>.
                             @endif
                         </div>
+                        <div class="row" style="margin-bottom: 20px;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Count</th>
+                                        <th>url</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($urls as $url)
+                                    <tr>
+                                        <td>
+                                            {{$url->value}}
+                                        </td>
+                                        <td>
+                                            {{$url->url}}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -88,9 +112,10 @@
     @endif
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script>
-		const timeFormat = 'MM/DD/YYYY HH:mm';
-		function newDateString(days) {
-			return moment().add(days, 'd').format(timeFormat);
-		}
+        const timeFormat = 'MM/DD/YYYY HH:mm';
+
+        function newDateString(days) {
+            return moment().add(days, 'd').format(timeFormat);
+        }
     </script>
 @endsection

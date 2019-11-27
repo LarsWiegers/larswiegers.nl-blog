@@ -61,7 +61,7 @@
                                             </td>
                                             <td>
                                                 <a href="{{route('backend.posts.edit',
-                                                ['category' => $post->id])}}">
+                                                ['post' => $post->id])}}">
                                                     <i class="fa fa-edit"></i></a>
                                             </td>
                                             <td>

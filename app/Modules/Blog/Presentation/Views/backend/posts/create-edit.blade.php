@@ -31,7 +31,7 @@
                                                'value' => old('content')  === null ? $post->content : old('content'),
                                                'label' => 'The content',
                                                'required' => 'required',
-                                               'cols' => 45,
+                                               'cols' => 10,
                                                'rows' => 10
                                            ], $errors) }}
                                 {{ Form::textGroup([
@@ -71,7 +71,6 @@
                                               'options' => $categories
                                           ], $errors) }}
                                 @endif
-test
                                 {{ Form::radioGroup([
                                            'name' => 'public',
                                            'value' => old('public')  === null ? $post->public : old('public'),

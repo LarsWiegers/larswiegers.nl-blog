@@ -6,6 +6,7 @@ use App\Charts\DefaultChart;
 use App\Http\Controllers\Controller;
 use App\Modules\Visitors\Domain\Visitor;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller {
 
@@ -58,7 +59,6 @@ class HomeController extends Controller {
 
 		forEach(Visitor::perMonthOfLastYear() as $monthNumberOfVisitors) {
 			$collection->add(count($monthNumberOfVisitors));
-
 		}
 
 		$chart->dataset(' # of visitors last year', 'line', $collection)
@@ -71,6 +71,12 @@ class HomeController extends Controller {
 				])
 		      ->fill(false);
 
+		$urls = DB::table('visitors')
+            ->select(DB::raw('count(*) as value, url'))
+            ->groupBy('url')
+            ->orderBy('value', 'desc')
+            ->get();
+
 		return view('Visitors::home', [
 				'allToday' => count($allToday),
 				'allMonth' => count($allMonth),
@@ -78,7 +84,8 @@ class HomeController extends Controller {
 				'previousToday' => count($previousToday),
 				'previousMonth' => count($previousMonth),
 				'previousYear' => count($previousYear),
-				'chart' => $chart
+				'chart' => $chart,
+                'urls' => $urls
 			]);
 	}
 }
