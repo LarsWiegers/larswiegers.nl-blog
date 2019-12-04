@@ -46,7 +46,7 @@
                     <li><a href="https://linkedin.com/in/larswiegers" class="icon style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
                     <li><a href="mailto:larswiegers@live.nl" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
                 </ul>
-                <p>&copy; Lars Wiegers 2018</p>
+                <p>&copy; Lars Wiegers {{Carbon\Carbon::now()->year}}</p>
             </div>
         </footer>
 
