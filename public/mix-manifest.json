@@ -1,6 +1,7 @@
 {
     "/js/backend.js": "/js/backend.js",
     "/css/contact.css": "/css/contact.css",
+    "/css/auth.css": "/css/auth.css",
     "/css/projects.css": "/css/projects.css",
     "/css/backend.css": "/css/backend.css",
     "/css/backend-visitors.css": "/css/backend-visitors.css",
